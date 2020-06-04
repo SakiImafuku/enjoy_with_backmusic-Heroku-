@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: enjoy_backmusic_production
-  username: enjoy_backmusic
-  password: <%= ENV['ENJOY_BACKMUSIC_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.rds[:host] %>
+  database: <%= Rails.application.credentials.rds[:database] %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>
