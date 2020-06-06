@@ -36,7 +36,7 @@ body {
 
 /*=== 2.FORM ===*/
 input, textarea, select{
-  width: 300px;
+  width: 500px;
   margin-bottom: 15px;
 }
 input[type="checkbox"]{
@@ -51,14 +51,4 @@ input[type="submit"]{
   h2{
     font-size: 15px;
   }
-}
-
-.form{
-  width: 300px;
-  margin: 0 auto;
-  h2{
-    text-align: center;
-  }
-
-  
 }
