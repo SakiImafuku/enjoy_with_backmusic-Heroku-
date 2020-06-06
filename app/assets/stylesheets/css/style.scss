@@ -1,0 +1,56 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: #252525;
+  font-weight: 400;
+}
+
+/*=== 1.COMMON ===*/
+.container {
+  width: 100%;
+}
+@media (min-width: 480px) {
+  .container {
+    width: 450px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+/*=== 2.FORM ===*/
+input, textarea, select{
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+#error_explanation{
+  color: red;
+  h2{
+    font-size: 15px;
+  }
+}
+
+.form_registration{
+  width: 300px;
+  margin: 0 auto;
+  h2{
+    text-align: center;
+  }
+}
