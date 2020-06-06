@@ -39,6 +39,12 @@ input, textarea, select{
   width: 300px;
   margin-bottom: 15px;
 }
+input[type="checkbox"]{
+  width: 20px;
+}
+input[type="submit"]{
+  margin: 15px 0;
+}
 
 #error_explanation{
   color: red;
@@ -47,10 +53,12 @@ input, textarea, select{
   }
 }
 
-.form_registration{
+.form{
   width: 300px;
   margin: 0 auto;
   h2{
     text-align: center;
   }
+
+  
 }
