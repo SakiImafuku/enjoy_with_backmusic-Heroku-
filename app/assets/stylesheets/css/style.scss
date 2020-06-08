@@ -9,6 +9,10 @@ body {
   font-weight: 400;
 }
 
+h2 {
+  margin-bottom: 15px;
+}
+
 /*=== 1.COMMON ===*/
 .container {
   width: 100%;
@@ -35,11 +39,16 @@ body {
 }
 
 /*=== 2.FORM ===*/
+.field{
+  display: flex;
+  flex-flow: column;
+}
 input, textarea, select{
   width: 500px;
   margin-bottom: 15px;
 }
 input[type="checkbox"]{
+  display: inline;
   width: 20px;
 }
 input[type="submit"]{
@@ -52,3 +61,4 @@ input[type="submit"]{
     font-size: 15px;
   }
 }
+
