@@ -7,6 +7,15 @@ body {
   line-height: 18px;
   color: #252525;
   font-weight: 400;
+  margin-top: 50px;
+  background-color: #F2F2F2;
+}
+
+main{
+  .container{
+    background-color: white;
+    height: 100vw;
+  }
 }
 
 h2 {
@@ -38,7 +47,24 @@ h2 {
   }
 }
 
-/*=== 2.FORM ===*/
+/*=== 2.HEADER ===*/
+header{
+  display: flex;
+  font-weight: 700;
+  #logo {
+    padding: 0 20px;
+    background-color: white;
+  }
+  img{
+    width: 50px;
+  }
+  input{
+    margin-top: 7px;
+    margin-bottom: 0;
+  }
+}
+
+/*=== 3.FORM ===*/
 .field{
   display: flex;
   flex-flow: column;
