@@ -13,6 +13,7 @@ class UploadMusicpostForm
     return false if invalid?
     taxons = Taxon.where(name: composer).or(Taxon.where(name: instrument))
     musicpost = user.musicposts.create(user_id: user.id, title: title, overview: overview)
+    musicpost.audio.attach(audio)
     taxons.each do |taxon|
       musicpost.classifications.create(musicpost_id: musicpost.id, taxon_id: taxon.id)
     end

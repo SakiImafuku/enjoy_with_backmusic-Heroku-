@@ -1,14 +1,19 @@
 <div class="container">
   <% if user_signed_in? %>
     <h1>ログイン後</h1>
-    <% @musicposts.each do |musicpost| %>
-      <%= musicpost.user_id %>
-      <%= musicpost.title %>
-      <%= musicpost.audio %>
-      <% musicpost.taxons.each do |taxon| %>
-        <%= taxon.name%>
-      <% end %>
+    <% @musicposts.each_with_index do |musicpost, index| %>
+      <div class="musicpost">
+        <%= musicpost.user.name %>
+        <%= musicpost.title %>
+        <% musicpost.taxons.each do |taxon| %>
+          <%= taxon.name %>
+        <% end %>
+          <%= button_to '再生', '/play', { method: :get, remote: true, params: { id: musicpost.id } } %>
+      </div>
     <% end %>
+    <div id="play">
+      <%= render 'shared/play' %>
+    </div>
   <% else %>
     <%= render 'static_pages/before_login' %>
   <% end %>

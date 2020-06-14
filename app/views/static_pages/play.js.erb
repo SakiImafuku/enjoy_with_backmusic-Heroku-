@@ -1,0 +1,5 @@
+$('#play').html('<%=j render partial: "shared/play", collections: @select_musicpost %>');
+
+audiojs.events.ready(function() {
+  var as = audiojs.createAll();
+});
