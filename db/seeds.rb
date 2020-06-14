@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Taxonomy
+[
+  '作曲家',
+  '演奏楽器',
+].each.with_index(1) do |name, i|
+  Taxonomy.create!(name: name, position: i)
+end
+
+# Taxon(作曲家)
+taxonomy = Taxonomy.find_by(name: "作曲家")
+[
+  'モーツアルト',
+  'ベートーベン',
+].each do |name|
+  Taxon.create!(name: name, taxonomy_id: 1)
+end

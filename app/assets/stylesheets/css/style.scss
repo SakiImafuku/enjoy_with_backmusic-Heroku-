@@ -68,6 +68,12 @@ header{
 .field{
   display: flex;
   flex-flow: column;
+  &.require{
+    & label::after{
+      content: "*";
+      color: red;
+    }
+  }
 }
 input, textarea, select{
   width: 500px;
@@ -81,7 +87,7 @@ input[type="submit"]{
   margin: 15px 0;
 }
 
-#error_explanation{
+#error_explanation, .error_messages{
   color: red;
   h2{
     font-size: 15px;

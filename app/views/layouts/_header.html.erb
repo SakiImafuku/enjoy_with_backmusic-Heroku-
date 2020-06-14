@@ -7,7 +7,7 @@
           <li><%= link_to "Home", root_url %></li>
           <li><%= link_to "Library", '' %></li>
           <li><input class="form-control" type="search" placeholder="Search" aria-label="Search"></li>
-          <li><%= link_to "Upload", '' %></li>
+          <li><%= link_to "Upload", new_upload_musicpost_path %></li>
           <li class="dropdown" >
             <%= link_to '', { class: "dropdown-toggle", 'data-toggle': "dropdown" }  do %>
               <%= current_user.name %> <i class="fas fa-angle-down"></i>

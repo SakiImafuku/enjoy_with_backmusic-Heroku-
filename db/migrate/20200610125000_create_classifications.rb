@@ -1,8 +1,8 @@
 class CreateClassifications < ActiveRecord::Migration[5.2]
   def change
     create_table :classifications do |t|
-      t.integer :musicpost_id
-      t.integer :taxon_id
+      t.belongs_to :musicpost
+      t.belongs_to :taxon
 
       t.timestamps
     end

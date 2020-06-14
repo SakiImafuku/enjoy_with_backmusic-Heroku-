@@ -1,5 +1,15 @@
-<% if user_signed_in? %>
-  <h1>ログイン後</h1>
-<% else %>
-  <%= render 'static_pages/before_login' %>
-<% end %>
+<div class="container">
+  <% if user_signed_in? %>
+    <h1>ログイン後</h1>
+    <% @musicposts.each do |musicpost| %>
+      <%= musicpost.user_id %>
+      <%= musicpost.title %>
+      <%= musicpost.audio %>
+      <% musicpost.taxons.each do |taxon| %>
+        <%= taxon.name%>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= render 'static_pages/before_login' %>
+  <% end %>
+</div>

@@ -16,11 +16,10 @@ ActiveRecord::Schema.define(version: 2020_06_10_125000) do
   enable_extension "plpgsql"
 
   create_table "classifications", force: :cascade do |t|
-    t.integer "musicpost_id"
-    t.integer "taxon_id"
+    t.bigint "musicpost_id"
+    t.bigint "taxon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["musicpost_id", "taxon_id"], name: "index_classifications_on_musicpost_id_and_taxon_id", unique: true
     t.index ["musicpost_id"], name: "index_classifications_on_musicpost_id"
     t.index ["taxon_id"], name: "index_classifications_on_taxon_id"
   end
