@@ -16,6 +16,7 @@ main{
   .container{
     background-color: white;
     min-height: calc(100vh - 50px);
+    padding: 20px;
   }
 }
 
@@ -161,6 +162,7 @@ footer{
   .time{
     text-shadow: none;
     color: #666;
+    border-color: #666;
     em{
       padding: 0px 2px 0px 0px;
       color: #666;

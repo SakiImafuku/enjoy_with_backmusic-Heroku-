@@ -1,4 +1,6 @@
 class UploadMusicpostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @upload = UploadMusicpostForm.new
   end
