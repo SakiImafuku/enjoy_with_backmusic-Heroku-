@@ -1,1 +1,5 @@
-$('footer').html('<%=j render partial: "layouts/footer", collections: @select_musicpost %>');
+$('footer').html('<%= j( render 'layouts/footer', select_musicpost: @select_musicpost ) %>');
+
+audiojs.events.ready(function() {
+  var as = audiojs.createAll();
+});
