@@ -7,14 +7,15 @@ body {
   line-height: 18px;
   color: #252525;
   font-weight: 400;
-  margin-top: 50px;
+  padding-top: 50px;
   background-color: #F2F2F2;
+  position: relative;
 }
 
 main{
   .container{
     background-color: white;
-    height: 100vw;
+    min-height: calc(100vh - 50px);
   }
 }
 
@@ -27,22 +28,22 @@ h2 {
   width: 100%;
 }
 @media (min-width: 480px) {
-  .container {
+  .container{
     width: 450px;
   }
 }
 @media (min-width: 768px) {
-  .container {
+  .container{
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .container {
+  .container{
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  .container {
+  .container{
     width: 1170px;
   }
 }
@@ -94,3 +95,79 @@ input[type="submit"]{
   }
 }
 
+/*=== 4.PLAYER ===*/
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #F2F2F2;
+  border-top: 1px solid #CECECE;
+}
+.player{
+  display: flex;
+  margin: 0 auto;
+  padding: 7px;
+  z-index: 10;
+}
+.audiojs{
+  height: 100%;
+  background: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;  
+  -o-box-shadow: none;
+  box-shadow: none;
+  p{
+    width: 26px;
+    height: 26px;
+    margin: 0px;
+    cursor: pointer;
+  }
+  .play-pause {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    margin: 0 10px 0 0;
+    background-color: #3A3A3A;
+    border-radius: 14px;
+  }
+  .scrubber {
+    position: relative;
+    float: left;
+    background: #5a5a5a;
+    height: 4px;
+    margin: 12px 0 0 0px;
+    border-top: 0;
+    border-left: 0px;
+    border-bottom: 0px;
+    overflow: hidden;
+  }
+  .progress {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 4px;
+    width: 0px;
+    background: #3A3A3A;
+    z-index: 1;  
+  }
+  .loaded {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 4px;
+    width: 0px;
+    background: #DDDDDD;
+  }
+  .time{
+    text-shadow: none;
+    color: #666;
+    em{
+      padding: 0px 2px 0px 0px;
+      color: #666;
+    }
+    strong{
+      padding: 0px 0px 0px 2px;
+      // color: #666;
+    }
+  }
+}

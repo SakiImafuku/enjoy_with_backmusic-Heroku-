@@ -1,2 +1,14 @@
 <footer>
+  <div class="container">
+    <div class ="player">
+      <%= audio_tag(url_for(@select_musicpost.audio), autoplay: true) if @select_musicpost %>
+      <%= @select_musicpost.title if @select_musicpost %>
+    </div>
+  </div>
 </footer>
+
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>

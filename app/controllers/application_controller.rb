@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
+  before_action :select_music, expect: [:play, :create, :destroy]
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def select_music
+    @select_musicpost = Musicpost.find_by(id: session[:select_musicpost_id])
+  end
 
   protected
 
