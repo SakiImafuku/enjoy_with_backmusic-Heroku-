@@ -6,17 +6,7 @@
       <% musicpost.taxons.each do |taxon| %>
         <%= taxon.name %>
       <% end %>
-      <div class=play_pause_button>
-        <button class="select_musicpost_play">
-          再生
-          <input class="src" type="hidden", value="<%= url_for(musicpost.audio) %>">
-          <input class="title" type="hidden", value="<%= musicpost.title %>">
-          <input class="upload_user" type="hidden", value="<%= musicpost.user.name %>">
-        </button>
-        <button class="select_musicpost_pause">
-          一時停止
-        </button>
-      </div>
+      <%= render 'shared/play_pause', musicpost: musicpost %>
     </div>
   <% end %>
 </div>
