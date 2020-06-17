@@ -1,12 +1,20 @@
 <div class="container">
-  <% @musicposts.each_with_index do |musicpost, index| %>
-    <div class="musicpost">
-      <%= musicpost.user.name %>
-      <%= musicpost.title %>
-      <% musicpost.taxons.each do |taxon| %>
-        <%= taxon.name %>
-      <% end %>
-      <%= render 'shared/play_pause', musicpost: musicpost %>
-    </div>
-  <% end %>
+  <div class="musicpost_index">
+    <% @musicposts.each_with_index do |musicpost, index| %>
+      <div class="row  musicpost">
+        <div class="col-md-3 musicpost_information">
+          <p class="title"><%= musicpost.title %></p>
+          <p class="name">投稿者：<%= musicpost.user.name %></p>
+          <p class="taxon">
+            <% musicpost.taxons.each do |taxon| %>
+              <%= taxon.name %>
+            <% end %>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <%= render 'shared/play_pause', musicpost: musicpost %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

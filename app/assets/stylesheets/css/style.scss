@@ -173,7 +173,27 @@ footer{
   }
 }
 
-/*=== 5.musicpost ===*/
-.select_musicpost_pause{
-  display: none;
+/*=== 5.musicpost_index ===*/
+.musicpost{
+  padding: 15px;
+  border-bottom: 1px solid #CECECE;
+  .musicpost_information{
+    flex-direction: column;
+    .title{
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .taxon{
+      color: #777777;
+    }
+  }
+  .play_pause_button{
+    color: #7B449A;
+    font-size: 40px;
+    cursor: pointer;
+    align-content: flex-end;
+    .select_musicpost_pause{
+      display: none;
+    }
+  }
 }
