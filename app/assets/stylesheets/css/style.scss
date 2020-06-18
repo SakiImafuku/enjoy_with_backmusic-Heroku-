@@ -173,7 +173,18 @@ footer{
   }
 }
 
-/*=== 5.musicpost_index ===*/
+/*=== 5.button ===*/
+.select_musicpost_pause{
+  display: none;
+}
+.play_pause_button{
+  color: #7B449A;
+  font-size: 40px;
+  cursor: pointer;
+  align-content: flex-end;
+}
+
+/*=== 6.musicpost_index ===*/
 .musicpost{
   padding: 15px;
   border-bottom: 1px solid #CECECE;
@@ -185,15 +196,6 @@ footer{
     }
     .taxon{
       color: #777777;
-    }
-  }
-  .play_pause_button{
-    color: #7B449A;
-    font-size: 40px;
-    cursor: pointer;
-    align-content: flex-end;
-    .select_musicpost_pause{
-      display: none;
     }
   }
 }
