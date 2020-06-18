@@ -1,0 +1,11 @@
+<div class="play_pause_button">
+  <div class="select_musicpost_play">
+    <i class="fas fa-play-circle"></i>
+    <input class="src" type="hidden", value="<%= url_for(musicpost.audio) %>">
+    <input class="title" type="hidden", value="<%= musicpost.title %>">
+    <input class="upload_user" type="hidden", value="<%= musicpost.user.name %>">
+  </div>
+  <div class="select_musicpost_pause">
+    <i class="fas fa-pause-circle"></i>
+  </div>
+</div>
