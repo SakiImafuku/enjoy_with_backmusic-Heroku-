@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'ユーザー', type: :system, js: true do
+describe 'ユーザー', type: :system do
   it '新規会員登録する' do
     visit new_user_registration_path
     fill_in "名前", with: 'test'

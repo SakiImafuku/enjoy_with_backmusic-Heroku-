@@ -1,4 +1,4 @@
-class UploadMusicpostForm
+class UploadMusicpost
   include ActiveModel::Model
 
   attr_accessor :title, :composer, :instrument, :overview, :audio
