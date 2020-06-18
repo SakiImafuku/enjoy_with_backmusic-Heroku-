@@ -173,18 +173,7 @@ footer{
   }
 }
 
-/*=== 5.button ===*/
-.select_musicpost_pause{
-  display: none;
-}
-.play_pause_button{
-  color: #7B449A;
-  font-size: 40px;
-  cursor: pointer;
-  align-content: flex-end;
-}
-
-/*=== 6.musicpost_index ===*/
+/*=== 5.musicpost_index ===*/
 .musicpost{
   padding: 15px;
   border-bottom: 1px solid #CECECE;
@@ -197,5 +186,30 @@ footer{
     .taxon{
       color: #777777;
     }
+  }
+}
+.select_musicpost_pause{
+  display: none;
+}
+.play_pause_button{
+  color: #7B449A;
+  font-size: 40px;
+  cursor: pointer;
+  align-content: flex-end;
+}
+
+/*=== 6.modal ===*/
+.modal-body{
+  #user_self_introduction{
+    height: 80px;
+  }
+}
+.modal-footer{
+  display: flex;
+  justify-content: flex-end;
+  .btn{
+    width: 100px;
+    height: 40px;
+    margin: 0 15px 15px 0;
   }
 }

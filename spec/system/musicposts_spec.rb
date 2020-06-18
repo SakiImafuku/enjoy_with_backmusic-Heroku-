@@ -4,8 +4,8 @@
 #   let!(:user_a) { create(:user) }
 #   let!(:taxonomy_composer) { create(:taxonomy, name: '作曲家', position: 1) }
 #   let!(:taxonomy_instrument) { create(:taxonomy, name: '演奏楽器', position: 2) }
-#   let!(:taxon_a) { create(:taxon, name: "morzart", taxonomy: taxonomy_composer) }  
-#   let!(:taxon_b) { create(:taxon, name: "violin", taxonomy: taxonomy_instrument) }  
+#   let!(:taxon_a) { create(:taxon, name: "morzart", taxonomy: taxonomy_composer) }
+#   let!(:taxon_b) { create(:taxon, name: "violin", taxonomy: taxonomy_instrument) }
 #   before do
 #     visit new_user_session_path
 #     fill_in 'メールアドレス', with: 'test1@example.com'
@@ -29,7 +29,7 @@
 #       expect
 #       expect(current_path).to eq root_path
 #       expect(page).to have_content 'test'
-      
+
 #     end
 
 #   end
