@@ -15,6 +15,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit_password
+    @user = current_user
+  end
+
+  def password_update
+    @user = current_user
+    if @user.valid_password?(params[:user][:current_password])
+      if @user.update(user_password_params)
+        bypass_sign_in(@user)
+        flash[:success] = "パスワードを変更しました"
+        redirect_to root_path
+      else
+        render "edit_password"
+      end
+    else
+      @user.errors.add(:current_password, 'が一致しません。')
+      render "edit_password"      
+    end
+  end
+
   protected
 
   def configure_sign_up_params
@@ -23,6 +43,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :self_introduction])
+  end
+
+  def user_password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def update_resource(resource, params)

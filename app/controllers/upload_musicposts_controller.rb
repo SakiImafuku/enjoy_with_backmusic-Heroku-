@@ -9,8 +9,8 @@ class UploadMusicpostsController < ApplicationController
     @upload = UploadMusicpost.new(set_params)
 
     # 作曲家、演奏楽器がDBにない場合登録
-    # @upload.composer_save unless Taxon.find_by(name: params[:composer])
-    # @upload.instrument_save unless Taxon.find_by(name: params[:instrument])
+    @upload.composer_save unless Taxon.find_by(name: params[:composer])
+    @upload.instrument_save unless Taxon.find_by(name: params[:instrument])
 
     # アップロード
     if @upload.save(current_user)
