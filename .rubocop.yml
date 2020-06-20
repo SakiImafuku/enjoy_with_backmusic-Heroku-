@@ -11,3 +11,4 @@ AllCops:
     - 'config/application.rb'
     - 'config/initializers/*'
     - 'config/spring.rb'
+    - 'config/routes.rb'

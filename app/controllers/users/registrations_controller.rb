@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       @user.errors.add(:current_password, 'が一致しません。')
-      render "edit_password"      
+      render "edit_password"
     end
   end
 
