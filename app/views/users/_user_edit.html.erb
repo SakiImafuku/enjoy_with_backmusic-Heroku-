@@ -10,13 +10,12 @@
       <%= form_with model: @user, url: user_registration_path, remote: true do |f| %>
         <div class="modal-body">
           <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="field">
+          <div class="field require">
             <%= f.label :name %>
             <%= f.text_field :name, autofocus: true %>
           </div>
           <div class="field">
-            <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.hidden_field :email, autofocus: true %>
           </div>
           <div class="field">
             <%= f.label :self_introduction %>

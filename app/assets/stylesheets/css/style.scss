@@ -24,6 +24,14 @@ h2 {
   margin-bottom: 15px;
 }
 
+a{
+  color: black;
+  &:hover{
+    text-decoration: none;
+    color: #797979;
+  }
+}
+
 /*=== 1.COMMON ===*/
 .container {
   width: 100%;
@@ -201,7 +209,7 @@ footer{
 /*=== 6.modal ===*/
 .modal-body{
   #user_self_introduction{
-    height: 80px;
+    height: 70px;
   }
 }
 .modal-footer{

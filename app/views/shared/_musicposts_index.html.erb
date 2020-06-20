@@ -4,7 +4,7 @@
       <div class="col-md-3 musicpost_information">
         <p class="title"><%= musicpost.title %></p>
         <% unless user_page %>
-          <p class="name">投稿者：<%= musicpost.user.name %></p>
+          <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
         <% end %>
         <p class="taxon">
           <% musicpost.taxons.each do |taxon| %>

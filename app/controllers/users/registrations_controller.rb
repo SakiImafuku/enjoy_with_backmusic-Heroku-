@@ -4,11 +4,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
-      redirect_to @user
+      redirect_back_or root_url
     else
       respond_to do |format|
         format.js
