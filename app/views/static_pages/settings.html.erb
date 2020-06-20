@@ -12,12 +12,11 @@
 </div>
 <div class="row change_password">
   <div class="col-md-4">
-    <h4>パスワード</h4>
-    <%= link_to '変更する', edit_user_registration_password_path %>
+    <h4><%= link_to 'パスワードを変更する', edit_user_registration_password_path %></h4>
   </div>
 </div>
 <div class="row delete_account">
   <div class="col-md-4">
-    <h4><%= link_to 'アカウントの削除', '/users', method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか？' } %></h5>
+    <h4><%= link_to 'アカウントを削除する', '/users', method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか？' } %></h5>
   </div>
 </div>
