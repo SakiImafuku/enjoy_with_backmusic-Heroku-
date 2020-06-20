@@ -1,0 +1,20 @@
+<div class="musicpost_index">
+  <% musicposts.each do |musicpost| %>
+    <div class="row  musicpost">
+      <div class="col-md-3 musicpost_information">
+        <p class="title"><%= musicpost.title %></p>
+        <% unless user_page %>
+          <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
+        <% end %>
+        <p class="taxon">
+          <% musicpost.taxons.each do |taxon| %>
+            <%= taxon.name %>
+          <% end %>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <%= render 'shared/play_pause', musicpost: musicpost %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
-#以下にはrubocopで検証したくないフォルダを指定する
+# 以下にはrubocopで検証したくないフォルダを指定する
 AllCops:
   Exclude:
     - 'vendor/**/*'
@@ -11,3 +11,9 @@ AllCops:
     - 'config/application.rb'
     - 'config/initializers/*'
     - 'config/spring.rb'
+    - 'config/routes.rb'
+
+# SystemSpecのexpect{}.to~ を使用する
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'

@@ -20,10 +20,22 @@ RSpec.describe User, type: :model do
     expect(user_a.errors[:email]).to include("が入力されていません。")
   end
 
+  it "名前が50文字を超える場合失敗する" do
+    user_a.name = "a" * 51
+    user_a.valid?
+    expect(user_a.errors[:name]).to include("は50文字以下に設定して下さい。")
+  end
+
   it "パスワードが５文字以下の場合失敗する" do
     user_a.password = "a" * 5
     user_a.valid?
     expect(user_a.errors[:password]).to include("は6文字以上に設定して下さい。")
+  end
+
+  it "自己紹介が300文字を超える場合失敗する" do
+    user_a.self_introduction = "a" * 301
+    user_a.valid?
+    expect(user_a.errors[:self_introduction]).to include("は300文字以下に設定して下さい。")
   end
 
   it "メールアドレスがすでに使用されている場合失敗する" do

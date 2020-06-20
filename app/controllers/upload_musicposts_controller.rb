@@ -2,11 +2,11 @@ class UploadMusicpostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @upload = UploadMusicpostForm.new
+    @upload = UploadMusicpost.new
   end
 
   def create
-    @upload = UploadMusicpostForm.new(set_params)
+    @upload = UploadMusicpost.new(set_params)
 
     # 作曲家、演奏楽器がDBにない場合登録
     @upload.composer_save unless Taxon.find_by(name: params[:composer])

@@ -24,6 +24,14 @@ h2 {
   margin-bottom: 15px;
 }
 
+a{
+  color: black;
+  &:hover{
+    text-decoration: none;
+    color: #797979;
+  }
+}
+
 /*=== 1.COMMON ===*/
 .container {
   width: 100%;
@@ -79,10 +87,11 @@ header{
 }
 input, textarea, select{
   width: 500px;
+  padding: 5px;
   margin-bottom: 15px;
 }
 input[type="checkbox"]{
-  display: inline;
+  display: inline-block;
   width: 20px;
 }
 input[type="submit"]{
@@ -93,6 +102,21 @@ input[type="submit"]{
   color: red;
   h2{
     font-size: 15px;
+  }
+}
+
+.change_email{
+  form{
+    display: flex;
+    margin-bottom: 15px;
+    #change_email{
+      width: 300px;
+      margin: 0 30px 0 0;
+    }
+    input[type="submit"]{
+      width: 100px;
+      margin: 0;
+    }    
   }
 }
 
@@ -187,13 +211,29 @@ footer{
       color: #777777;
     }
   }
-  .play_pause_button{
-    color: #7B449A;
-    font-size: 40px;
-    cursor: pointer;
-    align-content: flex-end;
-    .select_musicpost_pause{
-      display: none;
-    }
+}
+.select_musicpost_pause{
+  display: none;
+}
+.play_pause_button{
+  color: #7B449A;
+  font-size: 40px;
+  cursor: pointer;
+  align-content: flex-end;
+}
+
+/*=== 6.modal ===*/
+.modal-body{
+  #user_self_introduction{
+    height: 70px;
+  }
+}
+.modal-footer{
+  display: flex;
+  justify-content: flex-end;
+  .btn{
+    width: 100px;
+    height: 40px;
+    margin: 0 15px 15px 0;
   }
 }
