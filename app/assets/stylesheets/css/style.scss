@@ -87,10 +87,11 @@ header{
 }
 input, textarea, select{
   width: 500px;
+  padding: 5px;
   margin-bottom: 15px;
 }
 input[type="checkbox"]{
-  display: inline;
+  display: inline-block;
   width: 20px;
 }
 input[type="submit"]{

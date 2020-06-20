@@ -2,19 +2,22 @@ require 'rails_helper'
 
 describe 'ユーザー', type: :system, js: true do
   let!(:user) { create(:user) }
-  let!(:user_2) { create(:user, name: 'テストユーザー2', email: 'test2@example.com') }
+  let!(:user2) { create(:user, name: 'テストユーザー2', email: 'test2@example.com') }
+
   context '新規会員登録' do
     it '新規会員登録に成功する' do
       visit new_user_registration_path
-      fill_in "名前", with: 'test'
-      fill_in "メールアドレス", with: 'test@example.com'
-      fill_in "パスワード", with: 'password'
-      fill_in "確認用パスワード", with: 'password'
-      click_button '登録'
-      expect(current_path).to eq root_path
-      expect(page).to have_content 'アカウント登録が完了しました。'
+      expect {
+        fill_in "名前", with: 'test'
+        fill_in "メールアドレス", with: 'test@example.com'
+        fill_in "パスワード", with: 'password'
+        fill_in "確認用パスワード", with: 'password'
+        click_button '登録'
+        expect(current_path).to eq root_path
+        expect(page).to have_content 'アカウント登録が完了しました。'
+      }.to change(User, :count).by(1)
     end
-  
+
     it '新規会員登録に失敗する' do
       visit new_user_registration_path
       fill_in "名前", with: ''
@@ -68,15 +71,18 @@ describe 'ユーザー', type: :system, js: true do
       expect(page).to have_content '名前が入力されていません。'
       expect(page).to have_content '自己紹介は300文字以下に設定して下さい。'
     end
+
+    it '他のユーザーのユーザー情報を編集できない' do
+      visit user_path(user2.id)
+      expect(page).not_to have_content 'ユーザー情報編集'
+    end
   end
 
   context 'パスワード変更' do
     before do
       login_for_system(user)
       visit settings_path
-      within '.change_password' do
-        click_link "変更する"
-      end
+      click_link "パスワードを変更する"
     end
 
     it 'パスワードを変更する' do
@@ -112,16 +118,34 @@ describe 'ユーザー', type: :system, js: true do
       login_for_system(user)
       visit settings_path
     end
+
     it 'メールアドレスを変更する' do
       fill_in "change_email", with: "change@example.com"
       click_button "変更する"
       expect(current_path).to eq settings_path
       expect(page).to have_content "メールアドレスを変更しました"
+      expect(User.find(user.id).email).to eq "change@example.com"
     end
     it 'メールアドレスがすでに使用されている場合' do
       fill_in "change_email", with: 'test2@example.com'
       click_button "変更する"
       expect(page).to have_content "メールアドレスは既に使用されています。"
+    end
+  end
+
+  context 'アカウントの削除' do
+    before do
+      login_for_system(user)
+      visit settings_path
+    end
+
+    it 'アカウントを削除する' do
+      expect {
+        accept_confirm("アカウントを削除します。本当によろしいですか？") do
+          click_link 'アカウントを削除する'
+        end
+        expect(page).to have_content '新規登録'
+      }.to change(User, :count).by(-1)
     end
   end
 end
