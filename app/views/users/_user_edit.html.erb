@@ -11,6 +11,10 @@
         <div class="modal-body">
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field require">
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, accept: "img/*" %>
+          </div>
+          <div class="field require">
             <%= f.label :name %>
             <%= f.text_field :name, autofocus: true %>
           </div>
@@ -28,7 +32,7 @@
             <%= f.submit "変更する", class: "btn btn-primary" %>
           </div>
         </div>
-      <% end %>  
+      <% end %>
     </div>
   </div>
 </div>

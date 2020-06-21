@@ -1,5 +1,6 @@
 <div class="row user_information">
   <div class="col-md-4">
+    <%= image_tag(@user.display_avatar) if @user.avatar.attached? %>
     <h2><%= @user.name %></h2>
     <h5><%= @user.self_introduction %></h5>
   </div>

@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :self_introduction])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :name, :self_introduction])
   end
 
   def user_email_params
