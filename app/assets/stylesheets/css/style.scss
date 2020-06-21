@@ -246,7 +246,7 @@ footer{
 /*=== 7.user ===*/
 .user_information{
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   img{
     border-radius: 50%;
     margin-right: 20px;
@@ -259,6 +259,47 @@ footer{
 .user_main{
   border-top: 1px solid #CECECE;
   padding-top: 10px;
+}
+.user_tab{
+  ul{
+    display: flex;
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    border-bottom: 1px solid #F2F2F2;
+    li{
+      padding: 5px;
+      margin-right: 10px;
+      font-size: 18px;
+      &:hover{
+        border-bottom: 1px solid black;
+        a{
+          color: black;
+        }
+      }
+    }
+    .active{
+      border-bottom: 1px solid #7A4499;
+      pointer-events: none;
+      a{
+        color: #7A4499;
+      }
+    }
+  }
+}
+.user_relationship{
+  text-align: center;
+  margin: 5px 0;
+  img{
+    border-radius: 100%;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  p{
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
 /*=== 8.stats ===*/

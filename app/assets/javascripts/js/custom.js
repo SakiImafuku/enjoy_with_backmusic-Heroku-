@@ -44,3 +44,19 @@ jQuery(document).ready(function($) {
     })
   });
 });
+
+/*=== User_tab ===*/
+jQuery(document).ready(function($) {
+  $(window).on('load', function(){
+    if (document.URL.match('/following')){
+      console.log('following');
+      $('.following_list').addClass('active');
+      $('.following_list').siblings.removeClass('active');
+    }
+    if (document.URL.match('/followers')){
+      console.log('followers');
+      $('.followers_list').addClass('active');
+      $('.followers_list').siblings.removeClass('active');
+    }
+  });
+});

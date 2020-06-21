@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12 user_information">
+    <%= image_tag(user.display_avatar) %>
+    <h2><%= user.name %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 user_tab">
+    <ul>
+      <li class="likes_list">Likes</li>
+      <li class="following_list"><%= link_to "Following", following_user_path %></li>
+      <li class="followers_list"><%= link_to "Followers", followers_user_path %></li>
+      <li class="comments_list">Comments</li>
+    </ul>
+  </div>
+</div>
