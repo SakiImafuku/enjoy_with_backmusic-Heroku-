@@ -21,9 +21,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # デフォルト画像を保存する
+  def default_avatar
+    avatar.attach(io: File.open('app/assets/images/avatar.png'), filename: 'avatar.png', content_type: 'img/png')
+  end
+
   # 表示用のリサイズ済み画像を返す
   def display_avatar
-    avatar.variant(resize: "150x150!")
+    avatar.variant(combine_options:{resize:"150x150^",crop:"150x150+0+0",gravity: :center })
   end
 
   # ユーザーをフォローする
