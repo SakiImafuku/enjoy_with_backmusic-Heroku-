@@ -71,3 +71,13 @@ jQuery(document).ready(function($) {
 });
 
 /*=== AvatarCheck ===*/
+jQuery(document).ready(function($) {
+  $("#user_avatar").bind("change", function() {
+    console.log(1);
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("5MB以下のファイルを選択してください。");
+      $("#user_avatar").val("");
+    }
+  });
+});

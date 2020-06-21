@@ -10,9 +10,9 @@
       <%= form_with model: @user, url: user_registration_path, remote: true do |f| %>
         <div class="modal-body">
           <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="field require">
+          <div class="field">
             <%= f.label :avatar %>
-            <%= f.file_field :avatar, accept: "img/*" %>
+            <%= f.file_field :avatar, accept: "image/jpeg,image/png" %>
           </div>
           <div class="field require">
             <%= f.label :name %>
