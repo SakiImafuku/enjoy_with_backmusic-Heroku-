@@ -1,0 +1,13 @@
+<div class="row">
+  <% users.each do |user| %>
+    <div class="col-md-2 user_relationship">
+      <%= link_to user_path(user) do %>
+        <%= image_tag(user.display_avatar) %>
+        <p><%= user.name %></p>
+      <% end %>
+      <% unless user == current_user %>
+        <%= render 'users/follow_form', user: user %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
