@@ -1,7 +1,7 @@
 <div class="musicpost_index">
   <% musicposts.each do |musicpost| %>
     <div class="row  musicpost">
-      <div class="col-md-3 musicpost_information">
+      <div class="col-md-5 musicpost_information">
         <p class="title"><%= musicpost.title %></p>
         <% unless user_page %>
           <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
@@ -12,7 +12,7 @@
           <% end %>
         </p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <%= render 'shared/play_pause', musicpost: musicpost %>
       </div>
     </div>

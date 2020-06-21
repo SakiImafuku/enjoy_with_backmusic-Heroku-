@@ -32,6 +32,10 @@ a{
   }
 }
 
+.btn{
+  margin: 15px;
+}
+
 /*=== 1.COMMON ===*/
 .container {
   width: 100%;
@@ -96,6 +100,7 @@ input[type="checkbox"]{
 }
 input[type="submit"]{
   margin: 15px 0;
+  width: auto;
 }
 
 #error_explanation, .error_messages{
@@ -116,7 +121,7 @@ input[type="submit"]{
     input[type="submit"]{
       width: 100px;
       margin: 0;
-    }    
+    }
   }
 }
 
@@ -138,7 +143,7 @@ footer{
   height: 100%;
   background: none;
   -webkit-box-shadow: none;
-  -moz-box-shadow: none;  
+  -moz-box-shadow: none;
   -o-box-shadow: none;
   box-shadow: none;
   p{
@@ -173,7 +178,7 @@ footer{
     height: 4px;
     width: 0px;
     background: #3A3A3A;
-    z-index: 1;  
+    z-index: 1;
   }
   .loaded {
     position: absolute;
@@ -235,5 +240,48 @@ footer{
     width: 100px;
     height: 40px;
     margin: 0 15px 15px 0;
+  }
+}
+
+/*=== 7.user ===*/
+.user_information{
+  display: flex;
+  margin-bottom: 20px;
+  img{
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
+.link{
+  display: flex;
+  justify-content: flex-end;
+}
+.user_main{
+  border-top: 1px solid #CECECE;
+  padding-top: 10px;
+}
+
+/*=== 8.stats ===*/
+.stats{
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid #CECECE;
+    color: #999999;
+    width: 50%;
+    text-align: center;
+    &:first-child {
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  strong {
+    display: block;
   }
 }
