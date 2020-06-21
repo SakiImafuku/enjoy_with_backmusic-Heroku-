@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
       $(this).siblings().css('display', 'block');
     });
 
-    $selectMusicpostPause.click(function(){    
+    $selectMusicpostPause.click(function(){
       audio.pause();
       $selectMusicpostPlay.css('display', 'block');
       $selectMusicpostPause.css('display', 'none');
