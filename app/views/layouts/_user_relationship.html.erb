@@ -5,6 +5,9 @@
         <%= image_tag(user.display_avatar) %>
         <p><%= user.name %></p>
       <% end %>
+      <% unless user == current_user %>
+        <%= render 'users/follow_form', user: user %>
+      <% end %>
     </div>
   <% end %>
 </div>

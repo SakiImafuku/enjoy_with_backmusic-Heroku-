@@ -49,14 +49,25 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
   $(window).on('load', function(){
     if (document.URL.match('/following')){
-      console.log('following');
       $('.following_list').addClass('active');
-      $('.following_list').siblings.removeClass('active');
     }
     if (document.URL.match('/followers')){
-      console.log('followers');
       $('.followers_list').addClass('active');
-      $('.followers_list').siblings.removeClass('active');
     }
   });
+});
+
+/*=== User_relationship ===*/
+jQuery(document).ready(function($) {
+  // 最初はフォローボタン非表示（cssで設定するとクリックしたときに消えてしまう）
+  $('.user_relationship').find('.btn').css('display', 'none');
+  // hoverしたときにフォローボタンを表示
+  $('.user_relationship').hover(
+    function(){
+      $(this).find('.btn').css('display', 'block');
+    },
+    function(){
+      $(this).find('.btn').css('display', 'none');
+    }
+  );
 });

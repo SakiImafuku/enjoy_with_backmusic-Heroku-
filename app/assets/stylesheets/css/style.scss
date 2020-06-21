@@ -289,6 +289,7 @@ footer{
 }
 .user_relationship{
   text-align: center;
+  justify-content: center;
   margin: 5px 0;
   img{
     border-radius: 100%;
@@ -299,6 +300,11 @@ footer{
   p{
     text-align: center;
     font-size: 14px;
+    margin: 0;
+  }
+  .btn{
+    font-size: 8px;
+    margin: 2px auto;
   }
 }
 
