@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get    '/users/edit/password', to: 'users/registrations#edit_password', as: :edit_user_registration_password
     patch  '/users/edit/password', to: 'users/registrations#password_update'
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      get :following, :followers
+    end
+  end
   resources :upload_musicposts, only: [:new, :create]
+  resources :relationships, only: [:create, :destroy]
 end

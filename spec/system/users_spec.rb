@@ -21,7 +21,7 @@ describe 'ユーザー', type: :system, js: true do
     it '新規会員登録に失敗する' do
       visit new_user_registration_path
       fill_in "名前", with: ''
-      fill_in "メールアドレス", with: 'test1@example.com'
+      fill_in "メールアドレス", with: user.email
       fill_in "パスワード", with: 'password'
       fill_in "確認用パスワード", with: 'pass'
       click_button '登録'
