@@ -4,7 +4,9 @@ FactoryBot.define do
     title { "MyString" }
     overview { "MyText" }
     after(:build) do |user|
-      user.audio.attach(io: File.open('app/assets/audio/test.m4a'), filename: 'test.m4a', content_type: 'audio/m4a')
+      user.audio.attach(io: File.open('app/assets/audio/test.m4a'),
+                        filename: 'test.m4a',
+                        content_type: 'audio/m4a')
     end
   end
 end
