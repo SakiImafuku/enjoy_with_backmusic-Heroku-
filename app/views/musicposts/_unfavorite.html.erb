@@ -1,6 +1,6 @@
 <%= form_with(model: current_user.favorites.find_by(musicpost_id: musicpost.id),
                html: { method: :delete }, remote: true) do |f| %>
-  <%= f.button type: "submit" do %>
+  <%= f.button type: "submit", class:"favorite" do %>
     <i class="fab fa-gratipay"></i>
   <% end %>
 <% end %>
