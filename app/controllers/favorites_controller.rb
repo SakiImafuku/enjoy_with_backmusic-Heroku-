@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   def index
+    @musicposts = current_user.fav_musicposts
   end
 
   def create

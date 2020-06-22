@@ -276,7 +276,7 @@ footer{
   border-top: 1px solid #CECECE;
   padding-top: 10px;
 }
-.user_tab{
+.tab{
   ul{
     display: flex;
     list-style: none;
@@ -300,6 +300,13 @@ footer{
       a{
         color: #7A4499;
       }
+    }
+  }
+}
+.library_tab{
+  ul{
+    li{
+      font-size: 22px;
     }
   }
 }

@@ -43,8 +43,11 @@ jQuery(document).on('turbolinks:load', function() {
   })
 });
 
-/*=== User_tab ===*/
+/*=== Tab ===*/
 jQuery(document).on('turbolinks:load', function() {
+    if (document.URL.match('/favorites')){
+      $('.favorites_list').addClass('active');
+    }
     if (document.URL.match('/following')){
       $('.following_list').addClass('active');
     }
