@@ -47,4 +47,19 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  # お気に入り登録する
+  def favorite(musicpost)
+    fav_musicposts << musicpost
+  end
+
+  # お気に入りを解除する
+  def unfavorite(musicpost)
+    favorites.find_by(musicpost_id: musicpost.id).destroy
+  end
+
+  # お気に入り登録していたらtrueを返す
+  def favorite?(musicpost)
+    fav_musicposts.include?(musicpost)
+  end
 end
