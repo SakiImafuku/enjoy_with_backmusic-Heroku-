@@ -60,5 +60,4 @@ describe 'Relationship', type: :system, js: true do
       expect(page).to have_content 2
     end
   end
-
 end

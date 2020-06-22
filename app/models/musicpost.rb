@@ -2,6 +2,8 @@ class Musicpost < ApplicationRecord
   belongs_to :user
   has_many :classifications, dependent: :destroy
   has_many :taxons, through: :classifications
+  has_many :favorites, dependent: :destroy
+  has_many :fav_users, through: :favorites
 
   has_one_attached :audio
   validates :user_id, presence: true

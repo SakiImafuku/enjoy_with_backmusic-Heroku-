@@ -43,20 +43,21 @@ jQuery(document).on('turbolinks:load', function() {
   })
 });
 
-/*=== User_tab ===*/
-jQuery(document).ready(function($) {
-  $(window).on('load', function(){
+/*=== Tab ===*/
+jQuery(document).on('turbolinks:load', function() {
+    if (document.URL.match('/favorites')){
+      $('.favorites_list').addClass('active');
+    }
     if (document.URL.match('/following')){
       $('.following_list').addClass('active');
     }
     if (document.URL.match('/followers')){
       $('.followers_list').addClass('active');
     }
-  });
 });
 
 /*=== User_relationship ===*/
-jQuery(document).ready(function($) {
+jQuery(document).on('turbolinks:load', function() {
   // 最初はフォローボタン非表示（cssで設定するとクリックしたときに消えてしまう）
   $('.user_relationship').find('.btn').css('display', 'none');
   // hoverしたときにフォローボタンを表示
@@ -71,3 +72,13 @@ jQuery(document).ready(function($) {
 });
 
 /*=== AvatarCheck ===*/
+jQuery(document).ready(function($) {
+  $("#user_avatar").bind("change", function() {
+    console.log(1);
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("5MB以下のファイルを選択してください。");
+      $("#user_avatar").val("");
+    }
+  });
+});
