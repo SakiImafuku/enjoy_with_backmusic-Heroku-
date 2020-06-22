@@ -44,19 +44,17 @@ jQuery(document).on('turbolinks:load', function() {
 });
 
 /*=== User_tab ===*/
-jQuery(document).ready(function($) {
-  $(window).on('load', function(){
+jQuery(document).on('turbolinks:load', function() {
     if (document.URL.match('/following')){
       $('.following_list').addClass('active');
     }
     if (document.URL.match('/followers')){
       $('.followers_list').addClass('active');
     }
-  });
 });
 
 /*=== User_relationship ===*/
-jQuery(document).ready(function($) {
+jQuery(document).on('turbolinks:load', function() {
   // 最初はフォローボタン非表示（cssで設定するとクリックしたときに消えてしまう）
   $('.user_relationship').find('.btn').css('display', 'none');
   // hoverしたときにフォローボタンを表示
