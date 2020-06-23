@@ -20,7 +20,7 @@
       <li>作曲家：<%= @composer %></li>
       <li>演奏楽器：<%= @instrument %></li>
       <li>概要：<%= @musicpost.overview %></li>
-      <li>アップロード日時：</li>
+      <li>アップロード：<%= time_ago_in_words(@musicpost.created_at) %>前</li>
     </ul>
   </div>
 </div>
