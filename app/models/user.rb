@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :favorites, dependent: :destroy
   has_many :fav_musicposts, through: :favorites, source: :musicpost
+  has_many :comments, dependent: :destroy
+  has_many :com_musicposts, through: :comments, source: :musicpost
 
   has_one_attached :avatar
 
