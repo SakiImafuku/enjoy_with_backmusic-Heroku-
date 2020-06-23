@@ -75,9 +75,4 @@ class User < ApplicationRecord
   def comment(musicpost, content)
     comments.create(musicpost_id: musicpost.id, content: content)
   end
-
-  # コメントを削除する
-  def delete_comment(musicpost)
-    comments.find_by(musicpost_id: musicpost.id).destroy
-  end
 end

@@ -412,8 +412,16 @@ footer{
   .comment_header{
     color: #9C9C9C;
     font-size: 12px;
-    a{
-      color: #9C9C9C;
+    ul{
+      display: flex;
+      list-style: none;
+      padding: 0;
+      li{
+        padding-right: 10px;
+      }
+      a{
+        color: #9C9C9C;
+      }
     }
   }
 }

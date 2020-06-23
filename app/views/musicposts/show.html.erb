@@ -1,37 +1,4 @@
-<div class="row">
-  <div class="col-md-3 musicpost_detail_left">
-    <%= image_tag(@musicpost.user.display_avatar, class:"img_avatar") %>
-    <p><%= link_to @musicpost.user.name, @musicpost.user %></p>
-    <% unless @musicpost.user == current_user %>
-      <%= render 'users/follow_form', user: @musicpost.user %>
-    <% end %>
-    <div class="musicpost_button">
-      <ul>
-        <li><%= render 'shared/play_pause', musicpost: @musicpost %></li>
-        <% if user_signed_in? %>
-          <li><%= render 'musicposts/favorite_form', musicpost: @musicpost %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-  <div class="col-md-9 musicpost_detail_right">
-    <h1><%= @musicpost.title %></h1>
-    <ul>
-      <li>作曲家：<%= @composer.name %></li>
-      <li>演奏楽器：<%= @instrument.name %></li>
-      <li>概要：<%= @musicpost.overview %></li>
-      <li><%= time_ago_in_words(@musicpost.created_at) %>前に投稿</li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12 user_tab tab">
-    <ul>
-      <li class="comment_list"><%= link_to "コメント", '' %></li>
-      <li class="memo_list"><%= link_to "メモ", '' %></li>
-    </ul>
-  </div>
-</div>
+<%= render 'layouts/musicpost_tab', musicpost: @musicpost, composer: @composer, instrument: @instrument %>
 <div class="row">
   <div class="col-md-12">
     <div class="comment_create">
@@ -48,10 +15,22 @@
             <%= image_tag(comment.user.display_avatar, class:"img_avatar") %>
           </div>
           <div class="col-md-11">
-            <p class="comment_header">
-              <%= link_to comment.user.name, comment.user %>
-              <%= time_ago_in_words(comment.created_at) %>前
-            </p>
+            <div class="comment_header">
+              <ul>
+                <li><%= link_to comment.user.name, comment.user %></li>
+                <li><%= time_ago_in_words(comment.created_at) %>前</li>
+                <li>
+                  <% if comment.user == current_user %>
+                    <%= form_with(model: @comment, url: comment_path, method: :delete, local:true) do |f| %>
+                      <%= hidden_field_tag :comment_id, comment.id %>
+                      <%= f.button type: "submit" do %>
+                        <i class="fas fa-trash"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
             <p class="content"><%= comment.content %></p>
           </div>
         </div>

@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @musicposts = current_user.fav_musicposts
   end
