@@ -17,10 +17,10 @@
   <div class="col-md-9 musicpost_detail_right">
     <h1><%= @musicpost.title %></h1>
     <ul>
-      <li>作曲家：<%= @composer %></li>
-      <li>演奏楽器：<%= @instrument %></li>
+      <li>作曲家：<%= @composer.name %></li>
+      <li>演奏楽器：<%= @instrument.name %></li>
       <li>概要：<%= @musicpost.overview %></li>
-      <li>アップロード：<%= time_ago_in_words(@musicpost.created_at) %>前</li>
+      <li><%= time_ago_in_words(@musicpost.created_at) %>前に投稿</li>
     </ul>
   </div>
 </div>
@@ -30,5 +30,32 @@
       <li class="comment_list"><%= link_to "コメント", '' %></li>
       <li class="memo_list"><%= link_to "メモ", '' %></li>
     </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="comment_create">
+      <%= form_with(model: @comment, url: comments_path, local:true) do |f| %>
+          <%= hidden_field_tag :musicpost_id, @musicpost.id %>
+          <%= f.text_area :content, placeholder: "コメントを入力..." %>
+        <%= f.submit "コメント", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="comment_index">
+      <% @comments.each do |comment| %>
+        <div class="row comment">
+          <div class="col-md-1">
+            <%= image_tag(comment.user.display_avatar, class:"img_avatar") %>
+          </div>
+          <div class="col-md-11">
+            <p class="comment_header">
+              <%= link_to comment.user.name, comment.user %>
+              <%= time_ago_in_words(comment.created_at) %>前
+            </p>
+            <p class="content"><%= comment.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -70,4 +70,14 @@ class User < ApplicationRecord
   def favorite?(musicpost)
     fav_musicposts.include?(musicpost)
   end
+
+  # コメントする
+  def comment(musicpost, content)
+    comments.create(musicpost_id: musicpost.id, content: content)
+  end
+
+  # コメントを削除する
+  def delete_comment(musicpost)
+    comments.find_by(musicpost_id: musicpost.id).destroy
+  end
 end
