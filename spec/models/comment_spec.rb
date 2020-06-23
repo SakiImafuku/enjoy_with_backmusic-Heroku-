@@ -17,7 +17,12 @@ RSpec.describe Comment, type: :model do
     expect(comment).not_to be_valid
   end
 
-  it "musicpost_idがnilの場合、無効であること" do
+  it "コメントがnilの場合、無効であること" do
+    comment.content = nil
+    expect(comment).not_to be_valid
+  end
+
+  it "コメントが300文字を超える場合、無効であること" do
     comment.content = "a" * 301
     expect(comment).not_to be_valid
   end
