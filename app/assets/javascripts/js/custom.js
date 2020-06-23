@@ -45,6 +45,9 @@ jQuery(document).on('turbolinks:load', function() {
 
 /*=== Tab ===*/
 jQuery(document).on('turbolinks:load', function() {
+  if (document.URL.match('/musicposts')){
+    $('.comment_list').addClass('active');
+  }
     if (document.URL.match('/favorites')){
       $('.favorites_list').addClass('active');
     }
