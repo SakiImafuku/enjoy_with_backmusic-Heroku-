@@ -43,6 +43,10 @@ button{
   margin: 15px;
 }
 
+.img_avatar{
+  border-radius: 50%;
+}
+
 /*=== 1.COMMON ===*/
 .container {
   width: 100%;
@@ -223,21 +227,21 @@ footer{
       color: #777777;
     }
   }
-  .musicpost_button{
-    ul{
-      display: flex;
-      font-size: 40px;
-      color: #7B449A;
-      cursor: pointer;
-      list-style: none;
-      li{
-        margin-right: 10px;
-        .select_musicpost_pause{
-          display: none;
-        }
-        .unfavorite{
-          color: #CCCCCC;
-        }
+}
+.musicpost_button{
+  ul{
+    display: flex;
+    font-size: 40px;
+    color: #7B449A;
+    cursor: pointer;
+    list-style: none;
+    li{
+      margin-right: 10px;
+      .select_musicpost_pause{
+        display: none;
+      }
+      .unfavorite{
+        color: #CCCCCC;
       }
     }
   }
@@ -264,7 +268,6 @@ footer{
   display: flex;
   margin-bottom: 10px;
   img{
-    border-radius: 50%;
     margin-right: 20px;
   }
 }
@@ -315,7 +318,6 @@ footer{
   justify-content: center;
   margin: 5px 0;
   img{
-    border-radius: 100%;
     width: 100%;
     margin-bottom: 5px;
     text-align: center;
@@ -353,5 +355,35 @@ footer{
   }
   strong {
     display: block;
+  }
+}
+
+/*=== 9.musicpost_detail ===*/
+.musicpost_detail_left{
+  text-align: center;
+  img{
+    margin-bottom: 5px;
+  }
+  p{
+    font-size: 16px;
+    margin: 0;
+  }
+  .btn{
+    font-size: 8px;
+    margin: 0 0 5px 0;
+  }
+  ul{
+    padding: 0;
+    justify-content: center;
+  }
+}
+.musicpost_detail_right{
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  li{
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 }

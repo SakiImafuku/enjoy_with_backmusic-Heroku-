@@ -10,4 +10,9 @@ class Musicpost < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :overview, length: { maximum: 300 }
   validates :audio, presence: true
+
+  def taxons_filter(taxonomy_name)
+    taxonomy = Taxonomy.find_by(name: taxonomy_name)
+    taxons.find_by(taxonomy_id: taxonomy.id)
+  end
 end

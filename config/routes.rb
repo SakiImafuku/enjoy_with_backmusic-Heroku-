@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :upload_musicposts, only: [:new, :create]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
+  resources :musicposts, only: [:show]
 end
