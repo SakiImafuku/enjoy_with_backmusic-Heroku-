@@ -23,7 +23,7 @@
                   <% if comment.user == current_user %>
                     <%= form_with(model: @comment, url: comment_path, method: :delete, local:true) do |f| %>
                       <%= hidden_field_tag :comment_id, comment.id %>
-                      <%= f.button type: "submit" do %>
+                      <%= f.button type: "submit", id: "trash_comment" do %>
                         <i class="fas fa-trash"></i>
                       <% end %>
                     <% end %>
