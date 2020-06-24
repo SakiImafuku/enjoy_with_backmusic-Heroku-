@@ -30,7 +30,7 @@ describe 'Comment', type: :system, js: true do
     visit musicpost_path(musicpost.id)
     fill_in 'content', with: 'テストです'
     click_button 'コメント'
-    click_link 'header_other'
+    click_link 'Other'
     click_link 'Signout'
     login_for_system(user_b)
     visit musicpost_path(musicpost.id)
