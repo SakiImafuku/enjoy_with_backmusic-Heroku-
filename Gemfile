@@ -11,7 +11,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
-gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -44,6 +43,7 @@ gem 'jquery-rails'
 gem 'audiojs-rails'
 gem 'active_storage_validations'
 gem 'image_processing'
+gem 'bootstrap', '~> 4.5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

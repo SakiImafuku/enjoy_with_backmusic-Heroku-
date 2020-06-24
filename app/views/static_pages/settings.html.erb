@@ -1,7 +1,7 @@
 <h2>設定</h2>
 <div class="row change_email">
   <div class="col-md-12">
-    <h4>メールアドレスの変更</h4>
+    <h5>メールアドレスの変更</h5>
     <%= form_with model: @user, url: '/users/edit/email', local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: @user %>
       <%= f.hidden_field :name, value: @user.name %>
@@ -12,11 +12,11 @@
 </div>
 <div class="row change_password">
   <div class="col-md-4">
-    <h4><%= link_to 'パスワードを変更する', edit_user_registration_password_path %></h4>
+    <h5><%= link_to 'パスワードを変更する', edit_user_registration_password_path %></h5>
   </div>
 </div>
 <div class="row delete_account">
   <div class="col-md-4">
-    <h4><%= link_to 'アカウントを削除する', '/users', method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか？' } %></h5>
+    <h5><%= link_to 'アカウントを削除する', '/users', method: :delete, data: { confirm: 'アカウントを削除します。本当によろしいですか？' } %></h5>
   </div>
 </div>

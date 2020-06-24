@@ -4,10 +4,17 @@ class Musicpost < ApplicationRecord
   has_many :taxons, through: :classifications
   has_many :favorites, dependent: :destroy
   has_many :fav_users, through: :favorites
+  has_many :comments, dependent: :destroy
+  has_many :com_users, through: :comments
 
   has_one_attached :audio
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 50 }
   validates :overview, length: { maximum: 300 }
   validates :audio, presence: true
+
+  def taxons_filter(taxonomy_name)
+    taxonomy = Taxonomy.find_by(name: taxonomy_name)
+    taxons.find_by(taxonomy_id: taxonomy.id)
+  end
 end

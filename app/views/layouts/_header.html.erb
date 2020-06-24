@@ -1,48 +1,57 @@
 <header>
-  <nav class = "navbar navbar-fixed-top navbar-inverse">
-    <div class = "container header-navi">
+  <nav class = "navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
       <%= link_to image_tag("logo2.png", alt:"ロゴ画像"), root_url, id: "logo", class: "navbar-brand" %>
-      <ul class = "nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "Home", root_url %></li>
-          <li><%= link_to "Library", favorites_path %></li>
-          <li><input class="form-control" type="search" placeholder="Search" aria-label="Search"></li>
-          <li><%= link_to "Upload", new_upload_musicpost_path %></li>
-          <li class="dropdown" >
-            <%= link_to '', { class: "dropdown-toggle", 'data-toggle': "dropdown" }  do %>
-              <%= current_user.name %> <i class="fas fa-angle-down"></i>
-            <% end %>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "favorite", favorites_path %></li>
-              <li><%= link_to "following", '' %></li>
-            </ul>
-          </li>
-          <li>
-            <%= link_to '' do %>
-              <i class="fas fa-bell fa-lg"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '' do %>
-              <i class="fas fa-envelope fa-lg"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '', { class: "dropdown-toggle", 'data-toggle': "dropdown" } do %>
-              <i class="fas fa-ellipsis-h fa-lg"></i>
-            <% end %>
-            <ul class="dropdown-menu">
-              <li><%= link_to "About us", '' %></li>
-              <li><%= link_to "Settings", settings_path %></li>
-              <li><%= link_to "Signout", destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-        <% end %>
-      </ul>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="bs-navi">
+        <ul class = "navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "Home", root_url, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Library", favorites_path, class: "nav-link" %></li>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <%# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> %>
+            </form>
+            <%# <li class="nav-item"><input class="form-control" type="search" placeholder="Search" aria-label="Search"></li> %>
+            <li class="nav-item"><%= link_to "Upload", new_upload_musicpost_path, class: "nav-link" %></li>
+            <li class="nav-item">
+              <%= link_to '', class: "nav-link" do %>
+                <i class="fas fa-bell fa-lg"></i>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '', class: "nav-link" do %>
+                <i class="fas fa-envelope fa-lg"></i>
+              <% end %>
+            </li>
+            <li class="nav-item dropdown" >
+              <%= link_to '', { class: "dropdown-toggle nav-link", id: "user_navbarDropdown", 'data-toggle': "dropdown" }  do %>
+                <%= current_user.name %>
+              <% end %>
+              <div class="dropdown-menu" aria-labelledby="user_navbarDropdown">
+                <%= link_to "Profile", current_user, class: "dropdown-item" %>
+                <%= link_to "favorite", favorites_path, class: "dropdown-item" %>
+                <%= link_to "following", '', class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <%= link_to '', { class: "dropdown-toggle nav-link", id: "other_navbarDropdown", 'data-toggle': "dropdown" } do %>
+                Other
+              <% end %>
+              <div class="dropdown-menu" aria-labelledby="other_navbarDropdown">
+                <%= link_to "About us", '', class: "dropdown-item" %>
+                <%= link_to "Settings", settings_path, class: "dropdown-item" %>
+                <%= link_to "Signout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

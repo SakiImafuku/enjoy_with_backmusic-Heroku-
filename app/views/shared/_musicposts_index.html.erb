@@ -2,7 +2,7 @@
   <% musicposts.each do |musicpost| %>
     <div class="row  musicpost">
       <div class="col-md-5 musicpost_information">
-        <p class="title"><%= musicpost.title %></p>
+        <p class="title"><%= link_to musicpost.title, musicpost %></p>
         <% unless user_page %>
           <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
         <% end %>

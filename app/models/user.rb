@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :favorites, dependent: :destroy
   has_many :fav_musicposts, through: :favorites, source: :musicpost
+  has_many :comments, dependent: :destroy
+  has_many :com_musicposts, through: :comments, source: :musicpost
 
   has_one_attached :avatar
 
@@ -67,5 +69,10 @@ class User < ApplicationRecord
   # お気に入り登録していたらtrueを返す
   def favorite?(musicpost)
     fav_musicposts.include?(musicpost)
+  end
+
+  # コメントする
+  def comment(musicpost, content)
+    comments.create(musicpost_id: musicpost.id, content: content)
   end
 end
