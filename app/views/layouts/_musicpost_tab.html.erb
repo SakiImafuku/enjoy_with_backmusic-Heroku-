@@ -17,9 +17,9 @@
   <div class="col-md-9 musicpost_detail_right">
     <h1><%= musicpost.title %></h1>
     <ul>
-      <li>作曲家：<%= composer.name %></li>
-      <li>演奏楽器：<%= instrument.name %></li>
-      <li>概要：<%= musicpost.overview %></li>
+      <li><%= "作曲家： #{composer.name}" if composer %></li>
+      <li><%= "演奏楽器： #{instrument.name}" if instrument %></li>
+      <li><%= "概要： #{musicpost.overview}" unless musicpost.overview.blank?  %></li>
       <li><%= time_ago_in_words(musicpost.created_at) %>前に投稿</li>
     </ul>
   </div>
@@ -27,7 +27,7 @@
 <div class="row">
   <div class="col-md-12 user_tab tab">
     <ul>
-      <li class="comment_list"><%= link_to "コメント", '' %></li>
+      <li class="comment_list"><%= link_to "コメント", musicpost_path %></li>
       <li class="memo_list"><%= link_to "メモ", '' %></li>
     </ul>
   </div>
