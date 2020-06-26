@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :fav_musicposts, through: :favorites, source: :musicpost
   has_many :comments, dependent: :destroy
   has_many :com_musicposts, through: :comments, source: :musicpost
+  has_many :memos, dependent: :destroy
+  has_many :memo_musicposts, through: :memos, source: :musicpost
 
   has_one_attached :avatar
 
@@ -74,5 +76,15 @@ class User < ApplicationRecord
   # コメントする
   def comment(musicpost, content)
     comments.create(musicpost_id: musicpost.id, content: content)
+  end
+
+  # メモする
+  def memo(musicpost, memo)
+    memos.create(musicpost_id: musicpost.id, memo: memo)
+  end
+
+  # メモを更新する
+  def memo_update(musicpost, memo)
+    memos.update(musicpost_id: musicpost.id, memo: memo)
   end
 end

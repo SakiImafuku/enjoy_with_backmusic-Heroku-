@@ -6,6 +6,8 @@ class Musicpost < ApplicationRecord
   has_many :fav_users, through: :favorites
   has_many :comments, dependent: :destroy
   has_many :com_users, through: :comments
+  has_many :memos, dependent: :destroy
+  has_many :memo_users, through: :memos
 
   has_one_attached :audio
   validates :user_id, presence: true
