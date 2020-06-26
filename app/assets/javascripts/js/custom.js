@@ -45,18 +45,20 @@ jQuery(document).on('turbolinks:load', function() {
 
 /*=== Tab ===*/
 jQuery(document).on('turbolinks:load', function() {
-  if (document.URL.match('/musicposts')){
+  if (document.URL.match('/memos')){
+    $('.memo_list').addClass('active');
+  } else if (document.URL.match('/musicposts')){
     $('.comment_list').addClass('active');
   }
-    if (document.URL.match('/favorites')){
-      $('.favorites_list').addClass('active');
-    }
-    if (document.URL.match('/following')){
-      $('.following_list').addClass('active');
-    }
-    if (document.URL.match('/followers')){
-      $('.followers_list').addClass('active');
-    }
+  if (document.URL.match('/favorites')){
+    $('.favorites_list').addClass('active');
+  }
+  if (document.URL.match('/following')){
+    $('.following_list').addClass('active');
+  }
+  if (document.URL.match('/followers')){
+    $('.followers_list').addClass('active');
+  }
 });
 
 /*=== User_relationship ===*/
