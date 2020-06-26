@@ -5,6 +5,8 @@
       <%= hidden_field_tag :musicpost_id, @musicpost.id %>
       <%= f.text_area :memo, value: @memo.memo %>
       <%= f.submit "更新", class: "btn btn-primary" %>
+      <%= button_to 'キャンセル', memos_path, class: "btn btn-secondary" %>
     <% end %>
+
   </div>
 </div>
