@@ -12,13 +12,18 @@
           <% end %>
         </p>
       </div>
-      <div class="col-md-3 musicpost_button">
-        <ul>
-          <li><%= render 'shared/play_pause', musicpost: musicpost %></li>
-          <% if user_signed_in? %>
-            <li><%= render 'musicposts/favorite_form', musicpost: musicpost %></li>
-          <% end %>
-        </ul>
+      <div class="col-md-3 musicpost_index_right">
+        <div class="row musicpost_button">
+          <ul>
+            <li><%= render 'shared/play_pause', musicpost: musicpost %></li>
+            <% if user_signed_in? %>
+              <li><%= render 'musicposts/favorite_form', musicpost: musicpost %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="row">
+          <%= render 'shared/musicpost_stats', musicpost: musicpost %>
+        </div>
       </div>
     </div>
   <% end %>

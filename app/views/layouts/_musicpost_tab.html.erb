@@ -19,8 +19,9 @@
     <ul>
       <li><%= "作曲家： #{composer.name}" if composer %></li>
       <li><%= "演奏楽器： #{instrument.name}" if instrument %></li>
-      <li><%= "概要： #{musicpost.overview}" unless musicpost.overview.blank?  %></li>
-      <li><%= time_ago_in_words(musicpost.created_at) %>前に投稿</li>
+      <li><%= "概要： #{musicpost.overview}" unless musicpost.overview.blank?  %></li><br>
+      <%= render 'shared/musicpost_stats', musicpost: musicpost %>
+      <li class="time"><%= time_ago_in_words(musicpost.created_at) %>前に投稿</li>
     </ul>
   </div>
 </div>

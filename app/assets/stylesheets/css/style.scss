@@ -235,6 +235,10 @@ footer{
       color: #777777;
     }
   }
+  .musicpost_index_right{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .musicpost_button{
   ul{
@@ -243,6 +247,7 @@ footer{
     color: #7B449A;
     cursor: pointer;
     list-style: none;
+    padding-left: 0;
     li{
       margin-right: 10px;
       .select_musicpost_pause{
@@ -255,6 +260,16 @@ footer{
         color: #CCCCCC;
       }
     }
+  }
+}
+.musicpost_stats{
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 5px;
+  color: #9c9c9c;
+  .musicpost_stat{
+    display: flex;
+    margin-right: 10px;
   }
 }
 
@@ -396,6 +411,9 @@ footer{
   li{
     font-size: 14px;
     margin-bottom: 10px;
+    &.time{
+      color: #9c9c9c;
+    }
   }
 }
 
