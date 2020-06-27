@@ -14,7 +14,7 @@ jQuery(document).on('turbolinks:load', function() {
     } else {
       $playPauseButton.removeClass("select");
       $(this).parent().addClass("select");
-      $('audio').attr('src', $(this).children('.src').val());
+      audio.load($(this).children('.src').val());
       $('.music_information').children('.title').text($(this).children('.title').val());
       $('.music_information').children('.upload_user').text($(this).children('.upload_user').val());
       audio.play();
@@ -33,7 +33,6 @@ jQuery(document).on('turbolinks:load', function() {
 
   $('.play').click(function(){
     selectMusicpost = $(".select");
-    console.log(selectMusicpost);
     selectMusicpost.children(".select_musicpost_play").css('display', 'none');
     selectMusicpost.children(".select_musicpost_pause").css('display', 'block');
   })
@@ -89,9 +88,8 @@ jQuery(document).ready(function($) {
 });
 
 /*=== SelectSort===*/
-jQuery(document).ready(function($) {
+jQuery(document).on('turbolinks:load', function() {
   $('#order_select').change(function(){
-    console.log("start");
     $.ajax({
       url: '/',
       type: 'GET',
@@ -100,7 +98,6 @@ jQuery(document).ready(function($) {
       }
     })
     .done(function (html) {
-      console.log("a");
       $('.musicpost_index').html($('.musicpost_index', $(html)).html());
     })
     .fail(function (html) {
