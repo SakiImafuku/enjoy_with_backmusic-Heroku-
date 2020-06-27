@@ -15,6 +15,14 @@ class Musicpost < ApplicationRecord
   validates :overview, length: { maximum: 300 }
   validates :audio, presence: true
 
+  scope :latest, -> { order(created_at: :desc) }
+  scope :popular, -> {
+    left_outer_joins(:favorites).
+      select('musicposts.*, COUNT(favorites.*) AS fav_count').
+      group('musicposts.id').
+      order(fav_count: :desc)
+  }
+
   def taxons_filter(taxonomy_name)
     taxonomy = Taxonomy.find_by(name: taxonomy_name)
     taxons.find_by(taxonomy_id: taxonomy.id)

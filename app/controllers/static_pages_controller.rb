@@ -1,6 +1,12 @@
 class StaticPagesController < ApplicationController
   def home
-    @musicposts = Musicpost.with_attached_audio.includes(:user, :taxons)
+    order = params[:order]
+    musicposts = Musicpost.with_attached_audio.includes(:user, :taxons)
+    if order == "popular_order"
+      @musicposts = musicposts.popular
+    else
+      @musicposts = musicposts.latest
+    end
   end
 
   def settings

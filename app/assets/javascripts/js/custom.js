@@ -87,3 +87,23 @@ jQuery(document).ready(function($) {
     }
   });
 });
+
+/*=== SelectSort===*/
+jQuery(document).ready(function($) {
+  $('#order_select').change(function(){
+    console.log("start");
+    $.ajax({
+      url: '/',
+      type: 'GET',
+      data: {
+        order: $(this).val()
+      }
+    })
+    .done(function (html) {
+      console.log("a");
+      $('.musicpost_index').html($('.musicpost_index', $(html)).html());
+    })
+    .fail(function (html) {
+    })
+  })
+});
