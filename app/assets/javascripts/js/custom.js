@@ -1,49 +1,68 @@
 /*=== PLAYER ===*/
-jQuery(document).on('turbolinks:load', function() {
+jQuery(document).ready(function($) {
   var a = audiojs.createAll();
   let audio = a[0];
-  const $playPauseButton = $(".play_pause_button");
-  const $selectMusicpostPlay = $(".select_musicpost_play");
-  const $selectMusicpostPause = $(".select_musicpost_pause");
   $('.audiojs').css('display', 'none');
 
-  $selectMusicpostPlay.click(function(){
+  // 一覧の再生／停止ボタンをクリック
+  $(document).on('click', '.select_musicpost_play', function(){
     $('.audiojs').css('display', 'block');
     if($(this).parent().hasClass("select")){
       audio.play();
     } else {
-      $playPauseButton.removeClass("select");
+      $(".play_pause_button").removeClass("select");
       $(this).parent().addClass("select");
       audio.load($(this).children('.src').val());
       $('.music_information').children('.title').text($(this).children('.title').val());
       $('.music_information').children('.upload_user').text($(this).children('.upload_user').val());
       audio.play();
     }
-    $selectMusicpostPlay.css('display', 'block');
-    $selectMusicpostPause.css('display', 'none');
+    $(".select_musicpost_play").css('display', 'block');
+    $(".select_musicpost_pause").css('display', 'none');
     $(this).css('display', 'none');
     $(this).siblings().css('display', 'block');
   });
-
-  $selectMusicpostPause.click(function(){
+  $(document).on('click', '.select_musicpost_pause', function(){
     audio.pause();
-    $selectMusicpostPlay.css('display', 'block');
-    $selectMusicpostPause.css('display', 'none');
+    $(".select_musicpost_play").css('display', 'block');
+    $(".select_musicpost_pause").css('display', 'none');
   });
 
-  $('.play').click(function(){
-    selectMusicpost = $(".select");
-    selectMusicpost.children(".select_musicpost_play").css('display', 'none');
-    selectMusicpost.children(".select_musicpost_pause").css('display', 'block');
+  // プレーヤーの再生／停止ボタンをクリック
+  $(document).on('click', '.play', function(){
+    $selectMusicpost = $(".select");
+    $selectMusicpost.children(".select_musicpost_play").css('display', 'none');
+    $selectMusicpost.children(".select_musicpost_pause").css('display', 'block');
   })
-  $('.pause').click(function(){
-    $selectMusicpostPlay.css('display', 'block');
-    $selectMusicpostPause.css('display', 'none');
+  $(document).on('click', '.pause', function(){
+    $(".select_musicpost_play").css('display', 'block');
+    $(".select_musicpost_pause").css('display', 'none');
+  })
+
+  // 並び替えを行う
+  $('#order_select').change(function(){
+    selectMusicpostId = $(".select").attr('id');
+    $(".play_pause_button").removeClass("select");
+    audio.pause();
+    $.ajax({
+      url: '/',
+      type: 'GET',
+      data: {
+        order: $(this).val()
+      }
+    })
+    .done(function (html) {
+      $('.musicpost_index').html($('.musicpost_index', $(html)).html());
+      $('footer').html($('footer', $(html)).html());
+      $('#' + selectMusicpostId).addClass("select");
+    })
+    .fail(function (html) {
+    })
   })
 });
 
 /*=== Tab ===*/
-jQuery(document).on('turbolinks:load', function() {
+jQuery(document).ready(function($) {
   if (document.URL.match('/memos')){
     $('.memo_list').addClass('active');
   } else if (document.URL.match('/musicposts')){
@@ -61,7 +80,7 @@ jQuery(document).on('turbolinks:load', function() {
 });
 
 /*=== User_relationship ===*/
-jQuery(document).on('turbolinks:load', function() {
+jQuery(document).ready(function($) {
   // 最初はフォローボタン非表示（cssで設定するとクリックしたときに消えてしまう）
   $('.user_relationship').find('.btn').css('display', 'none');
   // hoverしたときにフォローボタンを表示
@@ -85,22 +104,4 @@ jQuery(document).ready(function($) {
       $("#user_avatar").val("");
     }
   });
-});
-
-/*=== SelectSort===*/
-jQuery(document).on('turbolinks:load', function() {
-  $('#order_select').change(function(){
-    $.ajax({
-      url: '/',
-      type: 'GET',
-      data: {
-        order: $(this).val()
-      }
-    })
-    .done(function (html) {
-      $('.musicpost_index').html($('.musicpost_index', $(html)).html());
-    })
-    .fail(function (html) {
-    })
-  })
 });
