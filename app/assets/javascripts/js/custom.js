@@ -43,6 +43,7 @@ jQuery(document).ready(function($) {
   $('#order_select').change(function(){
     selectMusicpostId = $(".select").attr('id');
     $(".play_pause_button").removeClass("select");
+    $('.now_loading').removeClass('hide');
     audio.pause();
     $.ajax({
       url: '/',
@@ -53,7 +54,7 @@ jQuery(document).ready(function($) {
     })
     .done(function (html) {
       $('.musicpost_index').html($('.musicpost_index', $(html)).html());
-      $('footer').html($('footer', $(html)).html());
+      $('.now_loading').addClass('hide');
       $('#' + selectMusicpostId).addClass("select");
     })
     .fail(function (html) {
