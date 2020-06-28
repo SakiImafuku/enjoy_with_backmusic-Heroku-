@@ -1,11 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
     order = params[:order]
-    musicposts = Musicpost.with_attached_audio.includes(:user, :taxons)
+    # musicposts = Musicpost.with_attached_audio.includes(:user, :taxons)
     if order == "popular_order"
-      @musicposts = musicposts.popular
+      @musicposts = Musicpost.popular.with_attached_audio.includes(:user, :taxons, :favorites)
     else
-      @musicposts = musicposts.latest
+      @musicposts = Musicpost.latest.with_attached_audio.includes(:user, :taxons, :favorites)
     end
   end
 
