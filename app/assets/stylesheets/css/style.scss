@@ -283,18 +283,24 @@ footer{
 }
 
 /*=== 6.modal ===*/
-.modal-body{
-  #user_self_introduction{
-    height: 70px;
+.modal{
+  input, textarea{
+    width: 100%;
   }
-}
-.modal-footer{
-  display: flex;
-  justify-content: flex-end;
-  .btn{
-    width: 100px;
-    height: 40px;
-    margin: 0 15px 15px 0;
+  .modal-body{
+    #user_self_introduction{
+      height: 70px;
+    }
+  }
+  .modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    .btn{
+      font-size: 14px;
+      width: 100px;
+      height: 40px;
+      margin: 0 15px 15px 0;
+    }
   }
 }
 
