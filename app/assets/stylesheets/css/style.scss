@@ -37,6 +37,9 @@ button{
   outline: none;
   padding: 0;
   appearance: none;
+  &:focus{
+    outline: none !important;
+  }
 }
 .btn{
   margin: 15px;
@@ -235,6 +238,10 @@ footer{
       color: #777777;
     }
   }
+  .musicpost_index_right{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .musicpost_button{
   ul{
@@ -243,6 +250,7 @@ footer{
     color: #7B449A;
     cursor: pointer;
     list-style: none;
+    padding-left: 0;
     li{
       margin-right: 10px;
       .select_musicpost_pause{
@@ -257,20 +265,42 @@ footer{
     }
   }
 }
-
-/*=== 6.modal ===*/
-.modal-body{
-  #user_self_introduction{
-    height: 70px;
+.musicpost_stats{
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 5px;
+  color: #9c9c9c;
+  .musicpost_stat{
+    display: flex;
+    margin-right: 10px;
   }
 }
-.modal-footer{
-  display: flex;
-  justify-content: flex-end;
-  .btn{
-    width: 100px;
-    height: 40px;
-    margin: 0 15px 15px 0;
+#order_select{
+  width: 100px;
+  height: 30px;
+  display: block;
+  margin-left: auto;
+}
+
+/*=== 6.modal ===*/
+.modal{
+  input, textarea{
+    width: 100%;
+  }
+  .modal-body{
+    #user_self_introduction{
+      height: 70px;
+    }
+  }
+  .modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    .btn{
+      font-size: 14px;
+      width: 100px;
+      height: 40px;
+      margin: 0 15px 15px 0;
+    }
   }
 }
 
@@ -396,6 +426,9 @@ footer{
   li{
     font-size: 14px;
     margin-bottom: 10px;
+    &.time{
+      color: #9c9c9c;
+    }
   }
 }
 
@@ -448,5 +481,30 @@ footer{
   .btn{
     margin: 0 15px 0 0;
 
+  }
+}
+
+/*=== 12.Load ===*/
+.now_loading{
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  /* flexboxを使ってローディングアイコンを画面の中央に寄せる */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  &.hide{
+    display: none;
   }
 }

@@ -1,6 +1,9 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
+LineLength:
+  Max: 120
+
 # 以下にはrubocopで検証したくないフォルダを指定する
 AllCops:
   Exclude:

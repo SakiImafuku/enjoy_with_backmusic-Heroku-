@@ -1,17 +1,30 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# describe 'musicpost', type: :system do
-#   let!(:user_a) { create(:user) }
-#   let!(:taxonomy_composer) { create(:taxonomy, name: '作曲家', position: 1) }
-#   let!(:taxonomy_instrument) { create(:taxonomy, name: '演奏楽器', position: 2) }
-#   let!(:taxon_a) { create(:taxon, name: "morzart", taxonomy: taxonomy_composer) }
-#   let!(:taxon_b) { create(:taxon, name: "violin", taxonomy: taxonomy_instrument) }
-#   before do
-#     visit new_user_session_path
-#     fill_in 'メールアドレス', with: 'test1@example.com'
-#     fill_in 'パスワード', with: 'password'
-#     click_button 'ログイン'
-#   end
+describe 'musicpost', type: :system, js: true do
+  let!(:user_a) { create(:user, name: 'ユーザーA', email: 'a@example.com') }
+  let!(:user_b) { create(:user, name: 'ユーザーB', email: 'b@example.com') }
+  let!(:musicpost_a) { create(:musicpost, title: 'テストA') }
+  let!(:musicpost_b) { create(:musicpost, title: 'テストB') }
+  let!(:musicpost_c) { create(:musicpost, title: 'テストC') }
+
+  before do
+    login_for_system(user_a)
+  end
+
+  it '並び替える' do
+    user_a.favorite(musicpost_a)
+    user_a.favorite(musicpost_b)
+    user_b.favorite(musicpost_a)
+    within first('.musicpost') do
+      expect(page).to have_content musicpost_c.title
+    end
+    select '人気順', from: 'order_select'
+    sleep 5
+    within first('.musicpost') do
+      expect(page).to have_content musicpost_a.title
+    end
+  end
+
 #   it '投稿する' do
 #     context '入力不備がある場合' do
 #       visit new_upload_musicpost_path
@@ -33,4 +46,4 @@
 #     end
 
 #   end
-# end
+end
