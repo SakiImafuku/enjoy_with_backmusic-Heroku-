@@ -7,12 +7,13 @@ class MusicpostsController < ApplicationController
   end
 
   def destroy
-    Musicpost.find(params[:id]).destroy
+    musicpost = Musicpost.find(params[:id])
+    musicpost.destroy
     flash[:success] = "投稿を削除しました"
-    if request.referrer == musicpost_path
+    if session[:forwarding_url]  == musicpost_url(musicpost)
       redirect_to root_url
     else
-      redirect_to request.referrer || root_url
+      redirect_back_or root_url
     end
   end
 end
