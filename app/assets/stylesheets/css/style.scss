@@ -44,6 +44,11 @@ button{
 .btn{
   margin: 15px;
 }
+.trash_musicpost{
+  i{
+    color: #9C9C9C;
+  }
+}
 
 .img_avatar{
   border-radius: 50%;
@@ -230,9 +235,13 @@ footer{
   border-bottom: 1px solid #CECECE;
   .musicpost_information{
     flex-direction: column;
-    .title{
-      font-size: 22px;
-      font-weight: bold;
+    .title_field{
+      display: flex;
+      .title{
+        font-size: 22px;
+        font-weight: bold;
+        margin-right: 15px;
+      }
     }
     .taxon{
       color: #777777;
@@ -419,6 +428,13 @@ footer{
   }
 }
 .musicpost_detail_right{
+  .title_field{
+    display: flex;
+    align-items: baseline;
+    h1{
+      margin-right: 20px;
+    }
+  }
   ul{
     list-style: none;
     padding: 0;

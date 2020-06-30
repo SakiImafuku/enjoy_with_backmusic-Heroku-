@@ -2,8 +2,10 @@
   <% musicposts.each do |musicpost| %>
     <div class="row  musicpost">
       <div class="col-md-5 musicpost_information">
-        <p class="title"><%= link_to musicpost.title, musicpost %></p>
-        <%= render 'shared/trash_musicpost', musicpost: musicpost %>
+        <div class="title_field">
+          <p class="title"><%= link_to musicpost.title, musicpost %></p>
+          <%= render 'shared/trash_musicpost', musicpost: musicpost %>
+        </div>
         <% unless user_page %>
           <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
         <% end %>
