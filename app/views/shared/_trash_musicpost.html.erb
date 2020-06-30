@@ -1,0 +1,9 @@
+<div class="trash_musicpost">
+  <% if musicpost.user == current_user %>
+    <%= form_with(model: @musicpost, url: musicpost_path(musicpost.id), method: :delete, local:true) do |f| %>
+      <%= f.button type: "submit", id: "trash_musicpost", data: {confirm: "削除しますか？"} do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

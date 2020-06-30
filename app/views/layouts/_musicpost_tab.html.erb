@@ -15,7 +15,10 @@
     </div>
   </div>
   <div class="col-md-9 musicpost_detail_right">
-    <h1><%= musicpost.title %></h1>
+    <div class="title_field">
+      <h1><%= musicpost.title %></h1>
+      <%= render 'shared/trash_musicpost', musicpost: musicpost %>
+    </div>
     <ul>
       <li><%= "作曲家： #{composer.name}" if composer %></li>
       <li><%= "演奏楽器： #{instrument.name}" if instrument %></li>
