@@ -3,4 +3,5 @@
   <option value="popular_order" option="selected">人気順</option>
 </select>
 <%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: false %>
+<%= paginate @musicposts %>
 <%= render 'shared/loading' %>
