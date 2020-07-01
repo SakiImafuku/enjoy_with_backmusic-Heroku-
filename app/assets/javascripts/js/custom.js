@@ -53,11 +53,14 @@ jQuery(document).on('turbolinks:load', function() {
         url: '/',
         type: 'GET',
         data: {
-          order: $(this).val()
+          order: $(this).val(),
+          page: 1
         }
       })
       .done(function (html) {
+        history.replaceState('','','/');
         $('.musicpost_index').html($('.musicpost_index', $(html)).html());
+        $('.pagination').html($('.pagination', $(html)).html());
         $('.now_loading').addClass('hide');
         $('#' + selectMusicpostId).addClass("select");
       })
