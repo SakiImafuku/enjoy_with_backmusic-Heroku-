@@ -2,11 +2,11 @@
   <div class="musicpost_stat">
     <i class="fas fa-heart"></i>
     <div class="favorite_count_<%= musicpost.id %>">
-      <%= musicpost.favorites.count %>
+      <%= musicpost.favorites.size %>
     </div>
   </div>
   <div class="musicpost_stat">
     <i class="fas fa-comments"></i>
-    <%= musicpost.comments.count %>
+    <%= musicpost.comments.size %>
   </div>
 </div>

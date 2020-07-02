@@ -29,6 +29,9 @@ a{
     text-decoration: none;
     color: #797979;
   }
+  &:focus, :active{
+    outline: none !important;
+  }
 }
 button{
   background-color: transparent;
@@ -522,5 +525,29 @@ footer{
   align-items: center;
   &.hide{
     display: none;
+  }
+}
+
+/*=== 13.Pagination ===*/
+.pagination{
+  margin: 15px 15px;
+  li{
+    margin-right: 5px;
+    a {
+      border: none;
+      color: #696969;
+      &:hover{
+        border-radius: 50% !important;
+      }
+      // &:active{
+      //   outline: none !important;
+      // }
+    }
+    &.active{
+      a{
+        background-color: #7B4499 !important;
+        border-radius: 50% !important;
+      }
+    }
   }
 }
