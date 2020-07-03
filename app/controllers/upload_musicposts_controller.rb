@@ -23,6 +23,6 @@ class UploadMusicpostsController < ApplicationController
   private
 
   def set_params
-    params.permit(:title, :composer, :instrument, :overview, :audio)
+    params.require(:upload_musicpost).permit(:title, :composer, :instrument, :overview, :audio)
   end
 end
