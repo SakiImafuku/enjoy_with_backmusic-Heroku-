@@ -1,14 +1,13 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h1>アップロード</h1>
-    <%= @upload.composer %>
     <p>あなたの演奏を配信しましょう</p>
     <%= form_with model: @upload_musicpost, url: upload_musicposts_path, local: true do |f| %>
       <div class="error_messages">
-        <% if @upload.errors.any? %>
-          <p><%= @upload.errors.count %>つのエラーがあります。</p>
+        <% if @upload_musicpost.errors.any? %>
+          <p><%= @upload_musicpost.errors.count %>つのエラーがあります。</p>
           <ul>
-            <% @upload.errors.full_messages.each do |msg| %>
+            <% @upload_musicpost.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>
@@ -31,7 +30,7 @@
         <%= f.text_field :instrument %>
       </div>
       <div class="field">
-        <%= f.label :overview %>    
+        <%= f.label :overview %>
         <%= f.text_area :overview %>
       </div>
       <div class="action">

@@ -1,5 +1,6 @@
 class UploadMusicpost
   include ActiveModel::Model
+  include ActiveModel::Attributes
 
   attr_accessor :title, :composer, :instrument, :overview, :audio
 

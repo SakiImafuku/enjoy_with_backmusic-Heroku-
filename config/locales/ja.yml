@@ -1,4 +1,12 @@
 ja:
+  activemodel:
+    attributes:
+      upload_musicpost:
+        audio: 音声ファイル
+        title: タイトル
+        composer: 作曲家
+        instrument: 演奏した楽器
+        overview: 概要
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
