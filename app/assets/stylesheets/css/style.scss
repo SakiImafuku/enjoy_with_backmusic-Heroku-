@@ -47,6 +47,14 @@ button{
 .btn{
   margin: 15px;
 }
+.btn-primary{
+  background: #7A4499;
+  border-color: #7A4499;
+  &:hover, :active{
+    background: #6a4499;
+    border-color: #6a4499;
+  }
+}
 .trash_musicpost{
   i{
     color: #9C9C9C;
@@ -317,13 +325,9 @@ footer{
     margin-right: 20px;
   }
 }
-.link{
+.user_button{
   display: flex;
   justify-content: flex-end;
-}
-.user_main{
-  border-top: 1px solid #CECECE;
-  padding-top: 10px;
 }
 .tab{
   ul{
