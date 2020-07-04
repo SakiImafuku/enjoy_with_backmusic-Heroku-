@@ -6,7 +6,12 @@
     </div>
   </div>
   <div class="musicpost_stat">
-    <i class="fas fa-comments"></i>
-    <%= musicpost.comments.size %>
+    <%= link_to musicpost_path(musicpost) do %>
+      <i class="fas fa-comments"></i>
+      <%= musicpost.comments.size %>
+    <% end %>
+  </div>
+  <div class="musicpost_stat">
+    <%= render 'shared/trash_musicpost', musicpost: musicpost %>
   </div>
 </div>

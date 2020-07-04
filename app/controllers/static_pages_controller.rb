@@ -3,9 +3,9 @@ class StaticPagesController < ApplicationController
     session[:order] = params[:order] || session[:order] || "latest_order"
     @order = session[:order]
     if @order  == "popular_order"
-      @musicposts = Musicpost.popular.page(params[:page]).per(5).with_attached_audio.includes(:user, :taxons, :favorites, :comments)
+      @musicposts = Musicpost.popular.page(params[:page]).per(8).with_attached_audio.includes(:user, :taxons, :favorites, :comments)
     else
-      @musicposts = Musicpost.latest.page(params[:page]).per(5).with_attached_audio.includes(:user, :taxons, :favorites, :comments)
+      @musicposts = Musicpost.latest.page(params[:page]).per(8).with_attached_audio.includes(:user, :taxons, :favorites, :comments)
     end
   end
 

@@ -234,47 +234,28 @@ footer{
 
 /*=== 5.musicpost_index ===*/
 .musicpost{
-  padding: 15px;
-  border-bottom: 1px solid #CECECE;
-  .musicpost_information{
-    flex-direction: column;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #CECECE;
+  justify-content: space-around;
+  .musicpost_container{
+    margin: 15px;
+    img{
+      width: 100%;
+    }
     .title_field{
       display: flex;
       .title{
         font-size: 22px;
         font-weight: bold;
+        line-height: 25px;
         margin-right: 15px;
       }
     }
-    .taxon{
-      color: #777777;
-    }
   }
-  .musicpost_index_right{
+  .musicpost_stats{
     display: flex;
     justify-content: space-between;
-  }
-}
-.musicpost_button{
-  ul{
-    display: flex;
-    font-size: 30px;
-    color: #7B449A;
-    cursor: pointer;
-    list-style: none;
-    padding-left: 0;
-    li{
-      margin-right: 10px;
-      .select_musicpost_pause{
-        display: none;
-      }
-      .favorite{
-        color: #ED4956;
-      }
-      .unfavorite{
-        color: #CCCCCC;
-      }
-    }
   }
 }
 .musicpost_stats{
@@ -285,6 +266,18 @@ footer{
   .musicpost_stat{
     display: flex;
     margin-right: 10px;
+    a{
+      color: #9c9c9c;
+    }
+  }
+  .play_pause_button{
+    font-size: 30px;
+    color: #7B449A;
+    cursor: pointer;
+    list-style: none;
+    .select_musicpost_pause{
+      display: none;
+    }
   }
 }
 #order_select{
