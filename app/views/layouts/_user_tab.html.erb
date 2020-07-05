@@ -1,12 +1,28 @@
 <div class="row">
-  <div class="col-md-12 user_information">
+  <div class="col-md-9 user_information">
     <%= image_tag(user.display_avatar, class:"img_avatar") %>
-    <h2><%= user.name %></h2>
+    <div class="user_text">
+      <h3><%= user.name %></h3>
+      <p><%= user.self_introduction %></p>
+    </div>
+  </div>
+  <div class="col-md-3 user_button">
+    <% if user == current_user %>
+      <button type="button" class="user_edit_btn btn btn-primary" data-toggle="modal" data-target="#user_edit">
+        ユーザー情報編集
+      </button>
+      <div class="user_edit_modal">
+        <%= render 'user_edit', resource: @user %>
+      </div>
+    <% else %>
+      <%= render 'users/follow_form', user: @user %>
+    <% end %>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 user_tab tab">
     <ul>
+      <li class="upload_list"><%= link_to "投稿一覧", user_path %></li>
       <li class="favorites_list"><%= link_to "お気に入り", favorites_user_path %></li>
       <li class="following_list"><%= link_to "フォロー", following_user_path %></li>
       <li class="followers_list"><%= link_to "フォロワー", followers_user_path %></li>

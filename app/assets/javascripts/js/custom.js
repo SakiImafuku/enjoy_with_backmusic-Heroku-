@@ -80,18 +80,26 @@ jQuery(document).on('turbolinks:load', function() {
   }
   if (document.URL.match('/favorites')){
     $('.favorites_list').addClass('active');
+    return;
   }
   if (document.URL.match('/following')){
     $('.following_list').addClass('active');
+    return;
   }
   if (document.URL.match('/followers')){
     $('.followers_list').addClass('active');
+    return;
   }
   if (document.URL.match('/favorites')){
     $('.favorites_list').addClass('active');
+    return;
   }
   if (document.URL.match('/comments')){
     $('.comments_list').addClass('active');
+    return;
+  }
+  if (document.URL.match('/users')){
+    $('.upload_list').addClass('active');
   }
 });
 
