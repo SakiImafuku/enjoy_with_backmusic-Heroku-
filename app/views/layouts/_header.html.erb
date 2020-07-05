@@ -17,29 +17,14 @@
                 <i class="fas fa-bell fa-lg"></i>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to '', class: "nav-link" do %>
-                <i class="fas fa-envelope fa-lg"></i>
-              <% end %>
-            </li>
             <li class="nav-item dropdown" >
               <%= link_to '', { class: "dropdown-toggle nav-link", id: "user_navbarDropdown", 'data-toggle': "dropdown" }  do %>
                 <%= current_user.name %>
               <% end %>
               <div class="dropdown-menu" aria-labelledby="user_navbarDropdown">
-                <%= link_to "Profile", current_user, class: "dropdown-item" %>
-                <%= link_to "favorite", favorites_path, class: "dropdown-item" %>
-                <%= link_to "following", '', class: "dropdown-item" %>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <%= link_to '', { class: "dropdown-toggle nav-link", id: "other_navbarDropdown", 'data-toggle': "dropdown" } do %>
-                Other
-              <% end %>
-              <div class="dropdown-menu" aria-labelledby="other_navbarDropdown">
-                <%= link_to "About us", '', class: "dropdown-item" %>
-                <%= link_to "Settings", settings_path, class: "dropdown-item" %>
-                <%= link_to "Signout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "プロフィール", current_user, class: "dropdown-item" %>
+                <%= link_to "設定", settings_path, class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% else %>
