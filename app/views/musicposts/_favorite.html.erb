@@ -1,6 +1,15 @@
-<%= form_with(model: current_user.favorites.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :musicpost_id, musicpost.id %></div>
-  <%= f.button type: "submit", class: "unfavorite" do %>
-    <i class="fas fa-heart"></i>
+<% if user_signed_in? %>
+  <%= form_with(url: favorites_path, remote: true) do |f| %>
+    <div><%= hidden_field_tag :musicpost_id, musicpost.id %></div>
+    <%= f.button type: "submit", class: "unfavorite" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= form_with(url: favorites_path, local: true) do |f| %>
+    <div><%= hidden_field_tag :musicpost_id, musicpost.id %></div>
+    <%= f.button type: "submit", class: "unfavorite" do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
   <% end %>
 <% end %>

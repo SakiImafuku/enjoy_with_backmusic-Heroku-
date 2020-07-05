@@ -1,7 +1,7 @@
 <div id="favorite_form_<%= musicpost.id %>">
-  <% if current_user.favorite?(musicpost) %>
-    <%= render 'musicposts/unfavorite', musicpost: musicpost %>
-  <% else %>
-    <%= render 'musicposts/favorite', musicpost: musicpost %>
-  <% end %>
+    <% if user_signed_in? && current_user.favorite?(musicpost) %>
+      <%= render 'musicposts/unfavorite', musicpost: musicpost %>
+    <% else %>
+      <%= render 'musicposts/favorite', musicpost: musicpost %>
+    <% end %>
 </div>

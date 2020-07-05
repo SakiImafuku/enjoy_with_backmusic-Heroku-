@@ -1,2 +1,2 @@
 $("#favorite_form_<%= @musicpost.id %>").html("<%= escape_javascript(render 'musicposts/unfavorite', musicpost: @musicpost) %>");
-$(".favorite_count_<%= @musicpost.id %>").html('<%= @musicpost.favorites.count %>');
+$(".favorite_count_<%= @musicpost.id %>").html('<span><%= @musicpost.favorites.count %></span>');
