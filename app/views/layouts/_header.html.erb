@@ -10,11 +10,7 @@
           <% if user_signed_in? %>
             <li class="nav-item"><%= link_to "Home", root_url, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Library", favorites_library_path(current_user), class: "nav-link" %></li>
-            <%= search_form_for @q, url: search_path do |f| %>
-              <form class="form-inline">
-                <%= f.search_field :title_or_overview_or_user_name_or_taxons_name_or_comments_content_or_memos_memo_cont, placeholder: 'Search', id: "search" %>
-              </form>
-            <% end %>
+            <%= render 'shared/search'%>
             <li class="nav-item"><%= link_to "Upload", new_upload_musicpost_path, class: "nav-link" %></li>
             <li class="nav-item">
               <%= link_to '', class: "nav-link" do %>
@@ -47,11 +43,7 @@
               </div>
             </li>
           <% else %>
-            <form class="form-inline">
-              <%= search_form_for @q, url: '/' do |f| %>
-                <%= f.search_field :title_or_overview_or_user_name_or_taxons_name_or_comments_content_cont, placeholder: 'Search' %>
-              <% end %>
-            </form>
+            <%= render 'shared/search'%>
             <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
           <% end %>

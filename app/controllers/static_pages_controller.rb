@@ -16,7 +16,8 @@ class StaticPagesController < ApplicationController
   end
 
   def search
-    @musicposts = @search_results.with_attached_audio.includes(:user, :taxons)
+    @musicposts = @search_results.latest.page(params[:page]).per(8).
+      with_attached_audio.includes(:user)
     @search_word = params[:q][:title_or_overview_or_user_name_or_taxons_name_or_comments_content_or_memos_memo_cont]
   end
 end
