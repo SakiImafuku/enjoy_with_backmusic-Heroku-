@@ -13,10 +13,25 @@ describe 'Musicpost', type: :system, js: true do
     login_for_system(user_a)
   end
 
+  it '投稿する' do
+    visit new_upload_musicpost_path
+    fill_in 'タイトル', with: 'test'
+    fill_in '作曲家', with: 'morzart'
+    fill_in '演奏した楽器', with: 'violin'
+    fill_in '概要', with: 'Hello!'
+    click_button '投稿'
+    expect(page).to have_content "アップロード"
+    expect(page).to have_content '音声ファイルを選択してください。'
+    attach_file '音声ファイル', 'app/assets/audio/test.m4a'
+    click_button '投稿'
+    expect(current_path).to eq root_path
+    expect(page).to have_content 'test'
+  end
+
   it '投稿を削除する(TOPページ)' do
     within all('.musicpost')[2] do
       accept_confirm("削除しますか？") do
-        click_button 'trash_musicpost'
+        click_button "trash_musicpost_#{musicpost_a.id}"
       end
     end
     expect(page).to have_content '投稿を削除しました'
@@ -27,7 +42,7 @@ describe 'Musicpost', type: :system, js: true do
   it '投稿を削除する(詳細ページ)' do
     click_link musicpost_a.title
     accept_confirm("削除しますか？") do
-      click_button 'trash_musicpost'
+      click_button "trash_musicpost_#{musicpost_a.id}"
     end
     expect(page).to have_content '投稿を削除しました'
     expect(page).not_to have_content musicpost_a.title
@@ -36,9 +51,9 @@ describe 'Musicpost', type: :system, js: true do
 
   it '投稿を削除する(ユーザーページ)' do
     visit user_path(user_a)
-    within all('.musicpost')[0] do
+    within all('.musicpost')[1] do
       accept_confirm("削除しますか？") do
-        click_button 'trash_musicpost'
+        click_button "trash_musicpost_#{musicpost_a.id}"
       end
     end
     expect(page).to have_content '投稿を削除しました'
@@ -48,7 +63,7 @@ describe 'Musicpost', type: :system, js: true do
 
   it '他のユーザーの投稿は削除できない' do
     within all('.musicpost')[0] do
-      expect(page).not_to have_button 'trash_musicpost'
+      expect(page).not_to have_button "trash_musicpost_#{musicpost_a.id}"
     end
   end
 
@@ -61,31 +76,9 @@ describe 'Musicpost', type: :system, js: true do
       expect(page).to have_content musicpost_c.title
     end
     select '人気順', from: 'order_select'
-    sleep 5
+    sleep 15
     within first('.musicpost') do
       expect(page).to have_content musicpost_a.title
     end
   end
-
-#   it '投稿する' do
-#     context '入力不備がある場合' do
-#       visit new_upload_musicpost_path
-#       attach_file 'Audio', 'app/assets/audio/test.m4a'
-#       fill_in 'Composer', with: 'morzart'
-#       fill_in 'Instrument', with: 'violin'
-#       fill_in 'Overview', with: 'Hello!'
-#       click_button '投稿'
-#       expect(current_path).to eq new_upload_musicpost_path
-#       expect(page),to have_content 'Titleが入力されていません。'
-#     end
-#     context '既存のTaxonを使用してアップロードに成功する場合' do
-#       attach_file 'Audio', 'app/assets/audio/test.m4a'
-#       fill_in 'Title', with: 'test'
-#       expect
-#       expect(current_path).to eq root_path
-#       expect(page).to have_content 'test'
-
-#     end
-
-#   end
 end

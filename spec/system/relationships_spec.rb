@@ -16,7 +16,7 @@ describe 'Relationship', type: :system, js: true do
     within '#followers' do
       expect(page).to have_content 1
     end
-    click_link 'followers'
+    click_link 'フォロワー'
     within '.user_relationship' do
       expect(page).to have_content user.name
     end
@@ -36,7 +36,7 @@ describe 'Relationship', type: :system, js: true do
     within '#followers' do
       expect(page).to have_content 1
     end
-    click_link 'followers'
+    click_link 'フォロワー'
     within '.user_relationship' do
       expect(page).not_to have_content user.name
     end
@@ -50,7 +50,9 @@ describe 'Relationship', type: :system, js: true do
     user2.follow(user3)
     visit following_user_path(user2)
     find('.user_relationship').hover
-    find('.btn').click
+    within '.user_relationship' do
+      find('.btn').click
+    end
     visit user_path(user)
     within '#following' do
       expect(page).to have_content 1

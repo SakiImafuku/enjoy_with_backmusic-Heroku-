@@ -22,7 +22,7 @@ describe 'Favorite', type: :system, js: true do
     within "#favorite_form_#{musicpost.id}" do
       find('.favorite').click
     end
-    visit favorites_path
+    visit favorites_library_path(musicpost)
     within 'main' do
       expect(page).not_to have_content musicpost.title
       expect(page).not_to have_content musicpost2.title
