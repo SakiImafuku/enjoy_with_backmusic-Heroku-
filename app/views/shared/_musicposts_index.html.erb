@@ -13,14 +13,13 @@
               <div class="col-md-<%= user_page ? 12 : 9 %>">
                 <div class="row title_field">
                   <p class="title"><%= link_to musicpost.title, musicpost %></p>
-
                 </div>
                 <div class ="row user">
                   <% unless user_page %>
                     <p>投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
                   <% end %>
                 </div>
-                <div class="row musicpost_stats">
+                <div class="row musicpost_buttons">
                   <%= render 'shared/play_pause', musicpost: musicpost %>
                   <%= render 'shared/musicpost_stats', musicpost: musicpost %>
                 </div>
