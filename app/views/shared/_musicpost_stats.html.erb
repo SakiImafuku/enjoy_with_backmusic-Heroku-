@@ -1,14 +1,14 @@
 <div class="musicpost_stats">
   <div class="musicpost_stat">
-    <i class="fas fa-heart"></i>
+    <%= render 'musicposts/favorite_form', musicpost: musicpost %>
     <div class="favorite_count_<%= musicpost.id %>">
-      <%= musicpost.favorites.size %>
+      <span><%= musicpost.favorites.size %></span>
     </div>
   </div>
   <div class="musicpost_stat">
     <%= link_to musicpost_path(musicpost) do %>
       <i class="fas fa-comments"></i>
-      <%= musicpost.comments.size %>
+      <span><%= musicpost.comments.size %></span>
     <% end %>
   </div>
   <div class="musicpost_stat">

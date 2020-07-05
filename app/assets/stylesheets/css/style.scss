@@ -276,18 +276,28 @@ footer{
   }
 }
 .musicpost_stats{
-  align-items: flex-end;
   display: flex;
+  align-items: flex-end;
   margin-bottom: 5px;
   color: #9c9c9c;
   .musicpost_stat{
     display: flex;
-    margin-right: 10px;
     a{
       color: #9c9c9c;
     }
+    span{
+      margin-right: 10px;
+    }
+    .unfavorite{
+      color: #9c9c9c;
+    }
+    .favorite{
+      color: #E1255F;
+    }
+    .trash_musicpost{
+      margin-right: 10px;
+    }
   }
-
 }
 #order_select{
   width: 100px;
