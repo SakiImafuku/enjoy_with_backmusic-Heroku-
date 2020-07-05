@@ -36,8 +36,10 @@ describe 'Memo', type: :system, js: true do
     click_link 'メモ'
     fill_in 'memo', with: 'テストです'
     click_button '作成'
-    click_link 'Other'
-    click_link 'Signout'
+    within 'header' do
+      click_link user_a.name
+    end
+    click_link 'ログアウト'
     login_for_system(user_b)
     visit musicpost_path(musicpost.id)
     click_link 'メモ'

@@ -28,6 +28,20 @@ describe 'Musicpost', type: :system, js: true do
     expect(page).to have_content 'test'
   end
 
+  it '投稿を再生する' do
+    visit root_url
+    find("#play_pause_button_#{musicpost_a.id}").click
+    within 'footer' do
+      expect(page).to have_content musicpost_a.title
+      expect(page).to have_content user_a.name
+    end
+    find("#play_pause_button_#{musicpost_c.id}").click
+    within 'footer' do
+      expect(page).to have_content musicpost_c.title
+      expect(page).to have_content user_b.name
+    end
+  end
+
   it '投稿を削除する(TOPページ)' do
     within all('.musicpost')[2] do
       accept_confirm("削除しますか？") do
@@ -66,7 +80,6 @@ describe 'Musicpost', type: :system, js: true do
       expect(page).not_to have_button "trash_musicpost_#{musicpost_a.id}"
     end
   end
-
 
   it '並び替える' do
     user_a.favorite(musicpost_a)

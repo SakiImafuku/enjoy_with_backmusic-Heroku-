@@ -4,6 +4,8 @@ describe 'Relationship', type: :system, js: true do
   let!(:user) { create(:user) }
   let!(:user2) { create(:user, name: 'テストユーザー2', email: 'test2@example.com') }
   let!(:user3) { create(:user, name: 'テストユーザー3', email: 'test3@example.com') }
+  let!(:musicpost_a) { create(:musicpost, title: 'テストA', user_id: user.id) }
+  let!(:musicpost_b) { create(:musicpost, title: 'テストB', user_id: user2.id) }
 
   before do
     login_for_system(user)
@@ -61,5 +63,13 @@ describe 'Relationship', type: :system, js: true do
     within '#followers' do
       expect(page).to have_content 2
     end
+  end
+
+  it 'フォローしている人の投稿一覧を確認する' do
+    visit user_path(user2.id)
+    click_button 'フォローする'
+    visit following_library_path(user)
+    expect(page).to have_content "テストB"
+    expect(page).not_to have_content "テストA"
   end
 end

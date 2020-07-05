@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     @musicposts = @user.musicposts.latest.page(params[:page]).per(8).
