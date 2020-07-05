@@ -27,4 +27,8 @@ class Musicpost < ApplicationRecord
     taxonomy = Taxonomy.find_by(name: taxonomy_name)
     taxons.find_by(taxonomy_id: taxonomy.id)
   end
+
+  def self.following_musicposts(user)
+    where(user_id: user.following.ids)
+  end
 end

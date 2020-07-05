@@ -2,10 +2,12 @@ class StaticPagesController < ApplicationController
   def home
     session[:order] = params[:order] || session[:order] || "latest_order"
     @order = session[:order]
-    if @order  == "popular_order"
-      @musicposts = Musicpost.popular.page(params[:page]).per(8).with_attached_audio.includes(:user, :favorites, :comments)
+    if @order == "popular_order"
+      @musicposts = Musicpost.popular.page(params[:page]).per(8).
+        with_attached_audio.includes(:user, :favorites, :comments)
     else
-      @musicposts = Musicpost.latest.page(params[:page]).per(8).with_attached_audio.includes(:user, :favorites, :comments)
+      @musicposts = Musicpost.latest.page(params[:page]).per(8).
+        with_attached_audio.includes(:user, :favorites, :comments)
     end
   end
 
