@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show] do
     member do
-      get :following, :followers
+      get :favorites, :following, :followers, :comments
     end
   end
   resources :upload_musicposts, only: [:new, :create]

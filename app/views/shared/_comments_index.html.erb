@@ -1,0 +1,32 @@
+<div class="comment_index">
+  <% comments.each do |comment| %>
+    <div class="row comment">
+      <div class="col-md-1">
+        <%= image_tag(comment.user.display_avatar, class:"img_avatar") %>
+      </div>
+      <div class="col-md-11">
+        <div class="comment_header">
+          <ul>
+            <% if user_name %>
+              <li><%= link_to comment.user.name, comment.user %></li>
+            <% else %>
+              <li><%= link_to comment.musicpost.title, comment.musicpost %></li>
+            <% end %>
+            <li><%= time_ago_in_words(comment.created_at) %>前</li>
+            <li>
+              <% if comment.user == current_user %>
+                <%= form_with(model: @comment, url: comment_path, method: :delete, local:true) do |f| %>
+                  <%= hidden_field_tag :comment_id, comment.id %>
+                  <%= f.button type: "submit", id: "trash_comment" do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <p class="content"><%= comment.content %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
