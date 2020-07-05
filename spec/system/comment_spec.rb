@@ -30,8 +30,10 @@ describe 'Comment', type: :system, js: true do
     visit musicpost_path(musicpost.id)
     fill_in 'content', with: 'テストです'
     click_button 'コメント'
-    click_link 'Other'
-    click_link 'Signout'
+    within 'header' do
+      click_link user_a.name
+    end
+    click_link 'ログアウト'
     login_for_system(user_b)
     visit musicpost_path(musicpost.id)
     within '.comment_index' do
@@ -39,5 +41,15 @@ describe 'Comment', type: :system, js: true do
       expect(page).to have_content 'テストです'
       expect(page).not_to have_button 'trash_comment'
     end
+  end
+
+  it 'ユーザーのコメント一覧を確認する' do
+    visit musicpost_path(musicpost.id)
+    fill_in 'content', with: 'テストです'
+    click_button 'コメント'
+    visit user_path(user_a)
+    click_link "コメント"
+    expect(page).to have_content musicpost.title
+    expect(page).to have_content "テストです"
   end
 end

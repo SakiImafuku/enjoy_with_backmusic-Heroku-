@@ -1,4 +1,3 @@
-<h2>検索結果</h2>
-<p>検索条件：<%= @search_word %></p>
+<%= render 'layouts/library_tab' %>
 <%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: false %>
 <%= paginate @musicposts %>

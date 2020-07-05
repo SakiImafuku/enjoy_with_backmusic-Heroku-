@@ -47,6 +47,14 @@ button{
 .btn{
   margin: 15px;
 }
+.btn-primary{
+  background: #7A4499;
+  border-color: #7A4499;
+  &:hover, :active{
+    background: #6a4499;
+    border-color: #6a4499;
+  }
+}
 .trash_musicpost{
   i{
     color: #9C9C9C;
@@ -234,57 +242,60 @@ footer{
 
 /*=== 5.musicpost_index ===*/
 .musicpost{
-  padding: 15px;
-  border-bottom: 1px solid #CECECE;
-  .musicpost_information{
-    flex-direction: column;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #CECECE;
+  justify-content: space-around;
+  .musicpost_container{
+    margin: 15px;
+    img{
+      width: 100%;
+    }
     .title_field{
       display: flex;
       .title{
         font-size: 22px;
         font-weight: bold;
+        line-height: 25px;
         margin-right: 15px;
       }
     }
-    .taxon{
-      color: #777777;
-    }
-  }
-  .musicpost_index_right{
-    display: flex;
-    justify-content: space-between;
   }
 }
-.musicpost_button{
-  ul{
-    display: flex;
-    font-size: 40px;
-    color: #7B449A;
-    cursor: pointer;
-    list-style: none;
-    padding-left: 0;
-    li{
-      margin-right: 10px;
-      .select_musicpost_pause{
-        display: none;
-      }
-      .favorite{
-        color: #7B449A;
-      }
-      .unfavorite{
-        color: #CCCCCC;
-      }
-    }
+.musicpost_buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.play_pause_button{
+  font-size: 30px;
+  color: #7B449A;
+  cursor: pointer;
+  list-style: none;
+  .select_musicpost_pause{
+    display: none;
   }
 }
 .musicpost_stats{
-  align-items: flex-end;
   display: flex;
   margin-bottom: 5px;
   color: #9c9c9c;
   .musicpost_stat{
     display: flex;
-    margin-right: 10px;
+    a{
+      color: #9c9c9c;
+    }
+    span{
+      margin-right: 10px;
+    }
+    .unfavorite{
+      color: #9c9c9c;
+    }
+    .favorite{
+      color: #E1255F;
+    }
+    .trash_musicpost{
+      margin-right: 10px;
+    }
   }
 }
 #order_select{
@@ -324,13 +335,10 @@ footer{
     margin-right: 20px;
   }
 }
-.link{
+.user_button{
   display: flex;
   justify-content: flex-end;
-}
-.user_main{
-  border-top: 1px solid #CECECE;
-  padding-top: 10px;
+  height: 80px
 }
 .tab{
   ul{
@@ -425,8 +433,9 @@ footer{
     font-size: 8px;
     margin: 0 0 5px 0;
   }
-  ul{
+  .musicpost_buttons{
     padding: 0;
+    margin: 5px 0;
     justify-content: center;
   }
 }

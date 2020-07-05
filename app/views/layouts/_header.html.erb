@@ -9,21 +9,12 @@
         <ul class = "navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item"><%= link_to "Home", root_url, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Library", favorites_path, class: "nav-link" %></li>
-            <%= search_form_for @q, url: search_path do |f| %>
-              <form class="form-inline">
-                <%= f.search_field :title_or_overview_or_user_name_or_taxons_name_or_comments_content_or_memos_memo_cont, placeholder: 'Search', id: "search" %>
-              </form>
-            <% end %>
+            <li class="nav-item"><%= link_to "Library", favorites_library_path(current_user), class: "nav-link" %></li>
+            <%= render 'shared/search'%>
             <li class="nav-item"><%= link_to "Upload", new_upload_musicpost_path, class: "nav-link" %></li>
             <li class="nav-item">
               <%= link_to '', class: "nav-link" do %>
                 <i class="fas fa-bell fa-lg"></i>
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '', class: "nav-link" do %>
-                <i class="fas fa-envelope fa-lg"></i>
               <% end %>
             </li>
             <li class="nav-item dropdown" >
@@ -31,27 +22,13 @@
                 <%= current_user.name %>
               <% end %>
               <div class="dropdown-menu" aria-labelledby="user_navbarDropdown">
-                <%= link_to "Profile", current_user, class: "dropdown-item" %>
-                <%= link_to "favorite", favorites_path, class: "dropdown-item" %>
-                <%= link_to "following", '', class: "dropdown-item" %>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <%= link_to '', { class: "dropdown-toggle nav-link", id: "other_navbarDropdown", 'data-toggle': "dropdown" } do %>
-                Other
-              <% end %>
-              <div class="dropdown-menu" aria-labelledby="other_navbarDropdown">
-                <%= link_to "About us", '', class: "dropdown-item" %>
-                <%= link_to "Settings", settings_path, class: "dropdown-item" %>
-                <%= link_to "Signout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "プロフィール", current_user, class: "dropdown-item" %>
+                <%= link_to "設定", settings_path, class: "dropdown-item" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
           <% else %>
-            <form class="form-inline">
-              <%= search_form_for @q, url: '/' do |f| %>
-                <%= f.search_field :title_or_overview_or_user_name_or_taxons_name_or_comments_content_cont, placeholder: 'Search' %>
-              <% end %>
-            </form>
+            <%= render 'shared/search'%>
             <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
           <% end %>

@@ -1,10 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @musicposts = current_user.fav_musicposts
-  end
-
   def create
     @musicpost = Musicpost.find(params[:musicpost_id])
     current_user.favorite(@musicpost)

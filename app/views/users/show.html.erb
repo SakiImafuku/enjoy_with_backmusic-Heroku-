@@ -1,31 +1,10 @@
-<div class="row">
-  <div class="col-md-12 user_information">
-    <%= image_tag(@user.display_avatar, class:"img_avatar") %>
-    <div class="user_text">
-      <h3><%= @user.name %></h3>
-      <p><%= @user.self_introduction %></p>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12 link">
-    <% if @user == current_user %>
-      <button type="button" class="user_edit_btn btn btn-primary" data-toggle="modal" data-target="#user_edit">
-        ユーザー情報編集
-      </button>
-      <div class="user_edit_modal">
-        <%= render 'user_edit', resource: @user %>
-      </div>
-    <% else %>
-      <%= render 'users/follow_form', user: @user %>
-    <% end %>
-  </div>
-</div>
+<%= render 'layouts/user_tab', user: @user %>
 <div class="row user_main">
-  <div class="col-md-8">
+  <div class="col-md-9">
     <%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: true %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= render 'shared/stats', user: @user %>
   </div>
+  <%= paginate @musicposts %>
 </div>

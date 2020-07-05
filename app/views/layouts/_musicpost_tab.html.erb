@@ -5,13 +5,8 @@
     <% unless musicpost.user == current_user %>
       <%= render 'users/follow_form', user: musicpost.user %>
     <% end %>
-    <div class="musicpost_button">
-      <ul>
-        <li><%= render 'shared/play_pause', musicpost: musicpost %></li>
-        <% if user_signed_in? %>
-          <li><%= render 'musicposts/favorite_form', musicpost: musicpost %></li>
-        <% end %>
-      </ul>
+    <div class="musicpost_buttons">
+      <%= render 'shared/play_pause', musicpost: musicpost %>
     </div>
   </div>
   <div class="col-md-9 musicpost_detail_right">

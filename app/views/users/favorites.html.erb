@@ -1,2 +1,3 @@
-<%= render 'layouts/library_tab' %>
+<%= render 'layouts/user_tab', user: @user %>
 <%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: false %>
+<%= paginate @musicposts %>

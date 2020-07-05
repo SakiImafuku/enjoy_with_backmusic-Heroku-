@@ -1,33 +1,33 @@
 <div class="musicpost_index">
-  <% musicposts.each do |musicpost| %>
-    <div class="row  musicpost">
-      <div class="col-md-5 musicpost_information">
-        <div class="title_field">
-          <p class="title"><%= link_to musicpost.title, musicpost %></p>
-          <%= render 'shared/trash_musicpost', musicpost: musicpost %>
+  <div class="row  musicposts">
+    <% musicposts.each do |musicpost| %>
+      <div class="col-md-6">
+        <div class="musicpost">
+          <div class="musicpost_container">
+            <div class="row">
+              <% unless user_page %>
+                <div class="col-md-3">
+                  <%= image_tag(musicpost.user.display_avatar, class:"img_avatar") %>
+                </div>
+              <% end %>
+              <div class="col-md-<%= user_page ? 12 : 9 %>">
+                <div class="row title_field">
+                  <p class="title"><%= link_to musicpost.title, musicpost %></p>
+                </div>
+                <div class ="row user">
+                  <% unless user_page %>
+                    <p>投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
+                  <% end %>
+                </div>
+                <div class="row musicpost_buttons">
+                  <%= render 'shared/play_pause', musicpost: musicpost %>
+                  <%= render 'shared/musicpost_stats', musicpost: musicpost %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <% unless user_page %>
-          <p class="name">投稿者：<%= link_to musicpost.user.name, musicpost.user %></p>
-        <% end %>
-        <p class="taxon">
-          <% musicpost.taxons.each do |taxon| %>
-            <%= taxon.name %>
-          <% end %>
-        </p>
       </div>
-      <div class="col-md-3 musicpost_index_right">
-        <div class="row musicpost_button">
-          <ul>
-            <li><%= render 'shared/play_pause', musicpost: musicpost %></li>
-            <% if user_signed_in? %>
-              <li><%= render 'musicposts/favorite_form', musicpost: musicpost %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="row">
-          <%= render 'shared/musicpost_stats', musicpost: musicpost %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
