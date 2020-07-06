@@ -7,16 +7,21 @@
     </div>
   </div>
   <div class="col-md-3 user_button">
-    <% if user == current_user %>
-      <button type="button" class="user_edit_btn btn btn-primary" data-toggle="modal" data-target="#user_edit">
-        ユーザー情報編集
-      </button>
-      <div class="user_edit_modal">
-        <%= render 'user_edit', resource: @user %>
-      </div>
-    <% else %>
-      <%= render 'users/follow_form', user: @user %>
-    <% end %>
+    <div class="row">
+      <% if user == current_user %>
+        <button type="button" class="user_edit_btn btn btn-primary" data-toggle="modal" data-target="#user_edit">
+          ユーザー情報編集
+        </button>
+        <div class="user_edit_modal">
+          <%= render 'user_edit', resource: @user %>
+        </div>
+      <% else %>
+        <%= render 'users/follow_form', user: @user %>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= render 'shared/stats', user: @user %>
+    </div>
   </div>
 </div>
 <div class="row">

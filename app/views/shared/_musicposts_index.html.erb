@@ -1,12 +1,12 @@
 <div class="musicpost_index">
-  <div class="row  musicposts">
+  <div class="row musicposts">
     <% musicposts.each do |musicpost| %>
       <div class="col-md-6">
         <div class="musicpost">
           <div class="musicpost_container">
             <div class="row">
               <% unless user_page %>
-                <div class="col-md-3">
+                <div class="col-md-3 avatar">
                   <%= image_tag(musicpost.user.display_avatar, class:"img_avatar") %>
                 </div>
               <% end %>

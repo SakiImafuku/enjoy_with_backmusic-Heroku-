@@ -1,10 +1,10 @@
 <div class="comment_index">
   <% comments.each do |comment| %>
-    <div class="row comment">
-      <div class="col-md-1">
+    <div class="row no-gutters comment">
+      <div class="col-md-1 col-2 ">
         <%= image_tag(comment.user.display_avatar, class:"img_avatar") %>
       </div>
-      <div class="col-md-11">
+      <div class="col-md-11 col-10 ">
         <div class="comment_header">
           <ul>
             <% if user_name %>

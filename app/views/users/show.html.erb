@@ -1,10 +1,7 @@
 <%= render 'layouts/user_tab', user: @user %>
 <div class="row user_main">
-  <div class="col-md-9">
+  <div class="col-md-12">
     <%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: true %>
-  </div>
-  <div class="col-md-3">
-    <%= render 'shared/stats', user: @user %>
   </div>
   <%= paginate @musicposts %>
 </div>
