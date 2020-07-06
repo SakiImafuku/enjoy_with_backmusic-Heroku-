@@ -23,7 +23,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
       <div class="actions">
-        <%= f.submit "登録" %>
+        <%= f.submit "登録", class: "user_edit_btn btn btn-primary" %>
       </div>
     <% end %>
     <p><%= render "devise/shared/links" %></p>
