@@ -1,3 +1,4 @@
+<% provide(:title, "#{@user.name}のコメント") %>
 <%= render 'layouts/user_tab', user: @user %>
 <%= render 'shared/comments_index', comments: @comments, user_name: false %>
 <%= paginate @comments %>
