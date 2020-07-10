@@ -9,15 +9,16 @@ jQuery(document).on('turbolinks:load', function() {
     // 一覧の再生ボタンをクリック
     $(document).off('click', '.select_musicpost_play').on('click', '.select_musicpost_play', function(){
       $('.audiojs').css('display', 'block');
+      console.log($(this).parent());
       if($(this).parent().hasClass("select")){
         audio.play();
       } else {
         $(".play_pause_button").removeClass("select");
         $(this).parent().addClass("select");
-        audio.load($(this).children('.src').val());
-        $('audio').attr('src', $(this).children('.src').val());
-        $('.music_information').children('.title').text($(this).children('.title').val());
-        $('.music_information').children('.upload_user').text($(this).children('.upload_user').val());
+        audio.load($(this).find('.src').val());
+        $('audio').attr('src', $(this).find('.src').val());
+        $('.music_information').find('.title').text($(this).find('.title').val());
+        $('.music_information').find('.upload_user').text($(this).find('.upload_user').val());
         audio.play();
       }
       $(".select_musicpost_play").css('display', 'block');
