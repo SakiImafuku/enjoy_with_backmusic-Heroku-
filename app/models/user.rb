@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :com_musicposts, through: :comments, source: :musicpost
   has_many :memos, dependent: :destroy
   has_many :memo_musicposts, through: :memos, source: :musicpost
+  has_many :histories, dependent: :destroy
+  has_many :history_musicposts, through: :histories, source: :musicpost
 
   has_one_attached :avatar
 
@@ -86,5 +88,12 @@ class User < ApplicationRecord
   # メモを更新する
   def memo_update(musicpost, memo)
     memos.update(musicpost_id: musicpost.id, memo: memo)
+  end
+
+  # history登録する, 削除する
+  def history(musicpost)
+    history = histories.find_by(musicpost_id: musicpost.id)
+    history.destroy if history
+    history_musicposts << musicpost
   end
 end

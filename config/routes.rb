@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :libraries, only: [] do
     member do
-      get :favorites, :following
+      get :favorites, :following, :histories
     end
   end
   resources :favorites, only: [:create, :destroy]
@@ -27,4 +27,5 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:create, :destroy]
+  resources :histories, only: [:create]
 end

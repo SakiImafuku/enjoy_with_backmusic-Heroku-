@@ -14,10 +14,10 @@ jQuery(document).on('turbolinks:load', function() {
       } else {
         $(".play_pause_button").removeClass("select");
         $(this).parent().addClass("select");
-        audio.load($(this).children('.src').val());
-        $('audio').attr('src', $(this).children('.src').val());
-        $('.music_information').children('.title').text($(this).children('.title').val());
-        $('.music_information').children('.upload_user').text($(this).children('.upload_user').val());
+        audio.load($(this).find('.src').val());
+        $('audio').attr('src', $(this).find('.src').val());
+        $('.music_information').find('.title').text($(this).find('.title').val());
+        $('.music_information').find('.upload_user').text($(this).find('.upload_user').val());
         audio.play();
       }
       $(".select_musicpost_play").css('display', 'block');
@@ -84,6 +84,10 @@ jQuery(document).on('turbolinks:load', function() {
   }
   if (document.URL.match('/following')){
     $('.following_list').addClass('active');
+    return;
+  }
+  if (document.URL.match('/histories')){
+    $('.histories_list').addClass('active');
     return;
   }
   if (document.URL.match('/followers')){
