@@ -24,6 +24,10 @@ class Musicpost < ApplicationRecord
       group('musicposts.id').
       order(fav_count: :desc)
   }
+  scope :history_latest, -> {
+    left_outer_joins(:histories).
+      order("histories.id DESC")
+  }
 
   def taxons_filter(taxonomy_name)
     taxonomy = Taxonomy.find_by(name: taxonomy_name)
@@ -32,5 +36,9 @@ class Musicpost < ApplicationRecord
 
   def self.following_musicposts(user)
     where(user_id: user.following.ids)
+  end
+
+  def self.history_musicposts(user)
+    where(id: user.history_musicposts.ids)
   end
 end

@@ -9,7 +9,6 @@ jQuery(document).on('turbolinks:load', function() {
     // 一覧の再生ボタンをクリック
     $(document).off('click', '.select_musicpost_play').on('click', '.select_musicpost_play', function(){
       $('.audiojs').css('display', 'block');
-      console.log($(this).parent());
       if($(this).parent().hasClass("select")){
         audio.play();
       } else {
@@ -85,6 +84,10 @@ jQuery(document).on('turbolinks:load', function() {
   }
   if (document.URL.match('/following')){
     $('.following_list').addClass('active');
+    return;
+  }
+  if (document.URL.match('/histories')){
+    $('.histories_list').addClass('active');
     return;
   }
   if (document.URL.match('/followers')){

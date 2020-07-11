@@ -1,0 +1,4 @@
+<% provide(:title, '視聴履歴') %>
+<%= render 'layouts/library_tab' %>
+<%= render 'shared/musicposts_index', musicposts: @musicposts, user_page: false %>
+<%= paginate @musicposts %>

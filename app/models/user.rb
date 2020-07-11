@@ -92,7 +92,8 @@ class User < ApplicationRecord
 
   # history登録する, 削除する
   def history(musicpost)
-    histories.find_by(musicpost_id: musicpost.id).destroy
+    history = histories.find_by(musicpost_id: musicpost.id)
+    history.destroy if history
     history_musicposts << musicpost
   end
 end
