@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'ユーザー', type: :system, js: true do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, id: 1) }
   let!(:user2) { create(:user, name: 'テストユーザー2', email: 'test2@example.com') }
 
   context '新規会員登録' do
@@ -146,6 +146,14 @@ describe 'ユーザー', type: :system, js: true do
         end
         expect(page).to have_content '新規登録'
       }.to change(User, :count).by(-1)
+    end
+  end
+
+  it 'ゲストユーザーでログインする' do
+    visit root_url
+    click_link 'かんたんログイン'
+    within 'header' do
+      expect(page).to have_content 'ゲストユーザー'
     end
   end
 end
