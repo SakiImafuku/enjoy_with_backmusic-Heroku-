@@ -2,7 +2,7 @@
   <div class="select_musicpost_play">
     <%= form_with(url: histories_path, remote: true) do |f| %>
       <%= hidden_field_tag :musicpost_id, musicpost.id %>
-      <%= hidden_field_tag :src, url_for(musicpost.audio), class: "src" %>
+      <%= hidden_field_tag :src, request.host + url_for(musicpost.audio), class: "src" %>
       <%= hidden_field_tag :title, musicpost.title, class: "title" %>
       <%= hidden_field_tag :upload_user, musicpost.user.name, class: "upload_user" %>
       <%= f.button type: "submit" do %>
