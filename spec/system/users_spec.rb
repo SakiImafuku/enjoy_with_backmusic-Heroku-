@@ -10,7 +10,7 @@ describe 'ユーザー', type: :system, js: true do
       expect {
         fill_in "名前", with: 'test'
         fill_in "メールアドレス", with: 'test@example.com'
-        fill_in "パスワード", with: 'password'
+        fill_in "パスワード （6文字以上）", with: 'password'
         fill_in "確認用パスワード", with: 'password'
         click_button '登録'
         expect(current_path).to eq root_path
@@ -22,7 +22,7 @@ describe 'ユーザー', type: :system, js: true do
       visit new_user_registration_path
       fill_in "名前", with: ''
       fill_in "メールアドレス", with: user.email
-      fill_in "パスワード", with: 'password'
+      fill_in "パスワード （6文字以上）", with: 'password'
       fill_in "確認用パスワード", with: 'pass'
       click_button '登録'
       expect(current_path).to eq '/users'
@@ -87,7 +87,7 @@ describe 'ユーザー', type: :system, js: true do
 
     it 'パスワードを変更する' do
       fill_in "現在のパスワード", with: 'password'
-      fill_in "パスワード", with: 'changepass'
+      fill_in "パスワード （6文字以上）", with: 'changepass'
       fill_in "確認用パスワード", with: 'changepass'
       click_button "変更"
       expect(current_path). to eq '/'
@@ -96,7 +96,7 @@ describe 'ユーザー', type: :system, js: true do
 
     it '現在のパスワードに誤りがある場合' do
       fill_in "現在のパスワード", with: 'pass'
-      fill_in "パスワード", with: 'changepass'
+      fill_in "パスワード （6文字以上）", with: 'changepass'
       fill_in "確認用パスワード", with: 'changepass'
       click_button "変更"
       expect(current_path). to eq edit_user_registration_password_path
@@ -105,7 +105,7 @@ describe 'ユーザー', type: :system, js: true do
 
     it '新しいパスワードに誤りがある場合' do
       fill_in "現在のパスワード", with: 'password'
-      fill_in "パスワード", with: 'changepass'
+      fill_in "パスワード （6文字以上）", with: 'changepass'
       fill_in "確認用パスワード", with: 'pass'
       click_button "変更"
       expect(current_path). to eq edit_user_registration_password_path
