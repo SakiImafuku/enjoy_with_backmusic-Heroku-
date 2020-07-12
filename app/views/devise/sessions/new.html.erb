@@ -18,5 +18,6 @@
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
+  <%= button_to 'ゲストユーザーでログイン', users_easy_login_path, class: "btn btn-primary" %>
   <%= render "devise/shared/links" %>
 </div>

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/settings', to: 'static_pages#settings'
   get '/search', to: 'static_pages#search'
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations',
+                                    sessions: 'users/sessions' }
   devise_scope :user do
-    patch  '/users/edit/email', to: 'users/registrations#email_update'
+    post   '/users/easy_login',    to: 'users/sessions#easy_login'
+    patch  '/users/edit/email',    to: 'users/registrations#email_update'
     get    '/users/edit/password', to: 'users/registrations#edit_password', as: :edit_user_registration_password
     patch  '/users/edit/password', to: 'users/registrations#password_update'
   end
