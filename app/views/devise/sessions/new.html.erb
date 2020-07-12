@@ -1,5 +1,5 @@
 <% provide(:title, 'ログイン') %>
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 mx-auto form">
   <h2>ログイン</h2>
   <%= form_with model: @user, url: user_session_path, local: true do |f| %>
     <div class="field">
@@ -18,6 +18,6 @@
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
-  <%= button_to 'ゲストユーザーでログイン', users_easy_login_path, class: "btn btn-primary" %>
+  <%= button_to 'ゲストユーザーでログイン', users_easy_login_path, class: "btn btn-primary mt-0" %>
   <%= render "devise/shared/links" %>
 </div>
