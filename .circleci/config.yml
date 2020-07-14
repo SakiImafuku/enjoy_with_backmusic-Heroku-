@@ -1,0 +1,33 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: docker-compose build
+          command: docker-compose build
+      - run:
+          name: docker-compose up
+          command: docker-compose up -d
+      - run:
+          name: sleep for waiting launch db
+          command: sleep 1
+      - run:
+          name: "before_test: setup db"
+          command: docker-compose run web rails db:create db:migrate
+      - run:
+          name: rspec
+          command: docker-compose run web rspec
+      - run:
+          name: rubocop
+          command: bundle exec rubocop --parallel
+      - run:
+          name: docker-compose down
+          command: docker-compose down
+workflows:
+  version: 2.1
+  build_and_deploy:
+    jobs:
+      - build
