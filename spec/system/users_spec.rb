@@ -47,7 +47,7 @@ describe 'ユーザー', type: :system, js: true do
       fill_in "名前", with: "test_edit"
       fill_in "自己紹介", with: "Hello!"
       click_button "変更する"
-      sleep 0.5
+      sleep 1
       expect(current_path).to eq user_path(user)
       expect(page).to have_content 'ユーザー情報を更新しました'
       expect(page).to have_content 'test_edit'
@@ -59,7 +59,7 @@ describe 'ユーザー', type: :system, js: true do
       fill_in "名前", with: "test_edit"
       fill_in "自己紹介", with: ""
       click_button "変更する"
-      sleep 0.5
+      sleep 1
       expect(current_path).to eq user_path(user)
       expect(page).to have_content 'ユーザー情報を更新しました'
       expect(page).to have_content 'test_edit'
