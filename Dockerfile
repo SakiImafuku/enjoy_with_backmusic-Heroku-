@@ -18,10 +18,6 @@ COPY Gemfile.lock /enjoy_backmusic/Gemfile.lock
 RUN bundle install
 COPY . /enjoy_backmusic
 
-# RAILS_MASTER_KEYの設定
-ARG RAILS_MASTER_KEY
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
-
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
