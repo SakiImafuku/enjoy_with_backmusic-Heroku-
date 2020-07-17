@@ -20,13 +20,11 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
 
 development:
   <<: *default
   database: enjoy_backmusic_development
-  host: db
-  username: postgres
-  password: secret
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,9 +58,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: db
-  username: postgres
-  password: secret
   database: enjoy_backmusic_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
