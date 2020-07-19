@@ -6,6 +6,7 @@ services:
       POSTGRES_HOST: db
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: secret
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
