@@ -18,6 +18,9 @@ jobs:
           name: 確認
           command: docker-compose ps
       - run:
+          name: ログ
+          command: docker-compose logs --tail=500
+      - run:
           name: setup db
           command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
       - run:
