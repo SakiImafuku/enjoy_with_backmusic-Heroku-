@@ -9,14 +9,14 @@ jobs:
           name: docker-compose build
           command: docker-compose build
       - run:
-          name: 環境変数の設定
-          command: echo "${RAILS_MASTER_KEY}"
-      - run:
           name: docker-compose up
           command: docker-compose up -d
       - run:
           name: sleep for waiting launch db
-          command: sleep 1
+          command: sleep 10
+      - run:
+          name: 確認
+          command: docker-compose ps
       - run:
           name: setup db
           command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
