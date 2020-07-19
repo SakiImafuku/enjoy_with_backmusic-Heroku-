@@ -1,4 +1,7 @@
 FROM ruby:2.5
+
+WORKDIR /enjoy_backmusic
+
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 RUN apt-get update && apt-get install -y unzip && \
     CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
@@ -12,7 +15,7 @@ RUN apt-get update && apt-get install -y unzip && \
     sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
     apt-get update && apt-get install -y google-chrome-stable
 
-WORKDIR /enjoy_backmusic
+
 COPY Gemfile /enjoy_backmusic/Gemfile
 COPY Gemfile.lock /enjoy_backmusic/Gemfile.lock
 RUN bundle install

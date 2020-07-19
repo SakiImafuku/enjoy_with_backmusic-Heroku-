@@ -2,8 +2,6 @@ version: '3'
 services:
   db:
     image: postgres
-    environment:
-      POSTGRES_PASSWORD: secret
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
@@ -16,8 +14,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      POSTGRES_HOST: db
-      POSTGRES_USERNAME: postgres
-      POSTGRES_PASSWORD: secret
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     depends_on:
       - db
