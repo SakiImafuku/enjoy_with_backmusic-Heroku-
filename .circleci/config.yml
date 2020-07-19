@@ -10,8 +10,7 @@ jobs:
           command: docker-compose build
       - run:
           name: 環境変数の設定
-          commnad: |
-            echo $RAILS_MASTER_KEY
+          commnad: echo "${RAILS_MASTER_KEY}"
       - run:
           name: docker-compose up
           command: docker-compose up -d
