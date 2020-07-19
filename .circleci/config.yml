@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build:
+    working_directory: ~/enjoy_backmusic
     machine:
       image: circleci/classic:edge
     steps:
