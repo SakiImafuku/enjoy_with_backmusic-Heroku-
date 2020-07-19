@@ -3,8 +3,6 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_HOST: db
-      POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: secret
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
