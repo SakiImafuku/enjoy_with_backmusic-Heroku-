@@ -1,0 +1,43 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/enjoy_backmusic
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: Setup environment variable
+          command: echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
+      - run:
+          name: docker-compose build
+          command: docker-compose build
+      - run:
+          name: docker-compose up
+          command: docker-compose up -d
+      - run:
+          name: sleep for waiting launch db
+          command: sleep 10
+      - run:
+          name: 確認
+          command: docker-compose ps
+      - run:
+          name: ログ
+          command: docker-compose logs --tail=500
+      - run:
+          name: setup db
+          command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
+      - run:
+          name: rspec
+          command: docker-compose exec web rspec
+      - run:
+          name: rubocop
+          command: docker-compose exec web rubocop
+      - run:
+          name: docker-compose down
+          command: docker-compose down
+workflows:
+  version: 2.1
+  build_and_deploy:
+    jobs:
+      - build
