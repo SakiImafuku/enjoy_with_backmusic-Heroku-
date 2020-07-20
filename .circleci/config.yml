@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Setup environment variable
-        command: echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
+          name: Setup environment variable
+          command: echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
       - run:
           name: docker-compose build
           command: docker-compose build
