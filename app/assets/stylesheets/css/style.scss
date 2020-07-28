@@ -598,14 +598,76 @@ footer{
       &:hover{
         border-radius: 50% !important;
       }
-      // &:active{
-      //   outline: none !important;
-      // }
     }
     &.active{
       a{
         background-color: #7B4499 !important;
         border-radius: 50% !important;
+      }
+    }
+  }
+}
+
+/*=== 13.About ===*/
+.about{
+  .top{
+    text-align: center;
+    margin-bottom: 50px;
+    img{
+      width: 30%;
+    }
+  }
+  .worry{
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 3px double #F4C930;
+    h2{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .worry_container{
+      display: flex;
+      img{
+        width: 100px;
+        height: 100px;
+      }
+      ul{
+        list-style: none;
+        li{
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+.service{
+  background-color: #F2F2F2;
+  padding: 30px;
+  margin-top: 30px;
+  h2{
+    text-align: center;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+    li{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 15px;
+      .title{
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      i{
+        font-size: 30px;
+        color: white;
+        background-color: #7B449A;
+        border-radius: 50%;
+        padding: 15px;
+        margin-bottom: 10px;
       }
     }
   }

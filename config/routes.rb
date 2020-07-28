@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/settings', to: 'static_pages#settings'
   get '/search', to: 'static_pages#search'
+  get '/about', to: 'static_pages#about'
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions' }
   devise_scope :user do
