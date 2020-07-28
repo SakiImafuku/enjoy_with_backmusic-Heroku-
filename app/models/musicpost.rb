@@ -10,6 +10,7 @@ class Musicpost < ApplicationRecord
   has_many :memo_users, through: :memos
   has_many :histories, dependent: :destroy
   has_many :history_users, through: :histories
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :audio
   validates :user_id, presence: true
