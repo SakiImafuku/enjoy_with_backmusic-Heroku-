@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
   def create
     @musicpost = Musicpost.find(params[:musicpost_id])
     current_user.favorite(@musicpost)
+    @musicpost.create_notification_like(current_user)
     respond_to do |format|
       format.html { redirect_back_or root_url }
       format.js

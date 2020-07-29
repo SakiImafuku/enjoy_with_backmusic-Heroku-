@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :histories, dependent: :destroy
   has_many :history_musicposts, through: :histories, source: :musicpost
   has_many :active_notifications, class_name: "Notification",
-                                  foreign_key: "visiter_id",
+                                  foreign_key: "visitor_id",
                                   dependent: :destroy
   has_many :passive_notifications, class_name: "Notification",
                                    foreign_key: "visited_id",
@@ -101,5 +101,16 @@ class User < ApplicationRecord
     history = histories.find_by(musicpost_id: musicpost.id)
     history.destroy if history
     history_musicposts << musicpost
+  end
+
+  # フォローされた時に通知する
+  def create_notification_follow(current_user)
+    unless Notification.find_by(visitor_id: current_user.id, visited_id: id, action: 'follow')
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end
