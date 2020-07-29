@@ -1,0 +1,12 @@
+<ul>
+  <% @notifications.each do |notification| %>
+    <% case notification.action %>
+    <% when 'follow' %>
+      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>があなたをフォローしました</li>
+    <% when 'favorite' %>
+      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>が<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>をお気に入り登録しました</li>
+    <% when 'comment' %>
+      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>が<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>にコメントしました</li>
+    <% end %>
+  <% end %>
+</ul>
