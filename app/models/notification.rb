@@ -3,4 +3,6 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
   belongs_to :musicpost, optional: true
   belongs_to :comment, optional: true
+
+  scope :latest, -> { order(created_at: :desc) }
 end
