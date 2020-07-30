@@ -672,3 +672,19 @@ footer{
     }
   }
 }
+
+/*=== 14.Notification ===*/
+.notification{
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid #CECECE;
+  img{
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    display: flex;
+  }
+  .detail{
+    color: #657786;
+  }
+}

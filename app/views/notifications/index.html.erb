@@ -1,12 +1,22 @@
-<ul>
-  <% @notifications.each do |notification| %>
+<% @notifications.each do |notification| %>
+  <div class="notification">
     <% case notification.action %>
     <% when 'follow' %>
-      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>があなたをフォローしました</li>
+      <%= image_tag(notification.visitor.display_avatar) %>
+      <div class="notification_right">
+        <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんがあなたをフォローしました</p>
+      </div>
     <% when 'favorite' %>
-      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>が<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>をお気に入り登録しました</li>
+      <%= image_tag(notification.visitor.display_avatar) %>
+      <div class="notification_right">
+        <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんがあなたの投稿（<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>）をお気に入り登録しました</p>
+      </div>
     <% when 'comment' %>
-      <li><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>が<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>にコメントしました</li>
+      <%= image_tag(notification.visitor.display_avatar) %>
+      <div class="notification_right">
+        <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんが<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>にコメントしました</p>
+        <p class="detail"><%= notification.comment.content %></p>
+      </div>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+<% end %>
