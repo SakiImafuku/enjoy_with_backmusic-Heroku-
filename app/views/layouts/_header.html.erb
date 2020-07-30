@@ -14,7 +14,7 @@
             <li class="nav-item"><%= link_to "Upload", new_upload_musicpost_path, class: "nav-link" %></li>
             <li class="nav-item">
               <%= link_to notifications_path, class: "nav-link" do %>
-                <i class="fas fa-bell fa-lg"></i>
+                <i class="fas fa-bell <%= "faa-ring animated" if unchecked_notifications %>"></i>
               <% end %>
             </li>
             <li class="nav-item dropdown" >

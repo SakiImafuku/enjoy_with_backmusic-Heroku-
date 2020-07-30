@@ -1,19 +1,17 @@
 <% @notifications.each do |notification| %>
   <div class="notification">
+    <%= link_to image_tag(notification.visitor.display_avatar), user_path(notification.visitor.id) %>
     <% case notification.action %>
     <% when 'follow' %>
-      <%= image_tag(notification.visitor.display_avatar) %>
-      <div class="notification_right">
+      <div class="notification_container">
         <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんがあなたをフォローしました</p>
       </div>
     <% when 'favorite' %>
-      <%= image_tag(notification.visitor.display_avatar) %>
-      <div class="notification_right">
+      <div class="notification_container">
         <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんがあなたの投稿（<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>）をお気に入り登録しました</p>
       </div>
     <% when 'comment' %>
-      <%= image_tag(notification.visitor.display_avatar) %>
-      <div class="notification_right">
+      <div class="notification_container">
         <p><%= link_to notification.visitor.name, user_path(notification.visitor.id) %>さんが<%= link_to notification.musicpost.title, musicpost_path(notification.musicpost.id) %>にコメントしました</p>
         <p class="detail"><%= notification.comment.content %></p>
       </div>
