@@ -4,5 +4,10 @@ class Notification < ApplicationRecord
   belongs_to :musicpost, optional: true
   belongs_to :comment, optional: true
 
+  validates :visitor_id, presence: true
+  validates :visited_id, presence: true
+  validates :action, presence: true
+  validates :checked, default: false
+
   scope :latest, -> { order(created_at: :desc) }
 end
