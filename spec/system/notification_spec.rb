@@ -37,11 +37,16 @@ describe 'Notification', type: :system, js: true do
     end
     click_link 'ログアウト'
     login_for_system(user_b)
+    visit root_url
+    within "#favorite_form_#{musicpost.id}" do
+      find('.unfavorite').click
+    end
     expect(page).to have_css '.faa-ring'
     within 'header' do
       find('.fa-bell').click
     end
     expect(page).to have_content('ユーザーAさんがあなたの投稿（テストA）をお気に入り登録しました')
+    expect(page).not_to have_content('ユーザーBさんがあなたの投稿（テストA）をお気に入り登録しました')
   end
 
   it 'コメントに通知される' do
@@ -52,6 +57,7 @@ describe 'Notification', type: :system, js: true do
       click_link user_a.name
     end
     click_link 'ログアウト'
+
     login_for_system(user_c)
     visit musicpost_path(musicpost.id)
     fill_in 'content', with: 'ユーザーCのテストです'
@@ -60,7 +66,11 @@ describe 'Notification', type: :system, js: true do
       click_link user_c.name
     end
     click_link 'ログアウト'
+
     login_for_system(user_b)
+    visit musicpost_path(musicpost.id)
+    fill_in 'content', with: 'ユーザーBのテストです'
+    click_button 'コメント'
     expect(page).to have_css '.faa-ring'
     within 'header' do
       find('.fa-bell').click
@@ -73,18 +83,18 @@ describe 'Notification', type: :system, js: true do
       expect(page).to have_content('ユーザーAさんがテストAにコメントしました')
       expect(page).to have_content('ユーザーAのテストです')
     end
+    expect(page).not_to have_content('ユーザーBのテストです')
     within 'header' do
       click_link user_b.name
     end
     click_link 'ログアウト'
+
     login_for_system(user_a)
     expect(page).to have_css '.faa-ring'
     within 'header' do
       find('.fa-bell').click
     end
-    within all('.notification')[0] do
-      expect(page).to have_content('ユーザーCさんがテストAにコメントしました')
-      expect(page).to have_content('ユーザーCのテストです')
-    end
+    expect(page).to have_content('ユーザーCさんがテストAにコメントしました')
+    expect(page).to have_content('ユーザーCのテストです')
   end
 end
