@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     musicpost = Musicpost.find(params[:musicpost_id])
-    current_user.comment(musicpost, params[:content])
+    comment = current_user.comment(musicpost, params[:content])
+    musicpost.create_notification_comment(current_user, comment.id) unless current_user == musicpost.user
     redirect_back_or root_url
   end
 

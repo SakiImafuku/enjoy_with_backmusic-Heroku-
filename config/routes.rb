@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create, :destroy]
   resources :histories, only: [:create]
+  resources :notifications, only: [:index]
 end
