@@ -1,24 +1,50 @@
-# README
+## アプリケーションの概要
+楽器演奏に特化した投稿SNSサービス（ https://enjoybackmusic.com ）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 技術的ポイント
+- AWS EC2/RDSを用いたRails本番環境構築
+- AWS ACMでSSL証明書を発行し、SSL化
+- 独自ドメイン取得、使用
+- Dockerを用いたRails開発環境構築
+- CircleCIによる自動ビルド＆テスト
+- RSpecでテスト記述
+- Ajaxを用いた非同期処理（フォロー/未フォロー、お気に入り登録/未登録などの切り替え表示）
+- Bootstrapによるレスポンシブ対応
+- Rubocopを使用したコード規約に沿った開発
+- 10のモデルをそれぞれ関連付けて使用
 
-Things you may want to cover:
 
-* Ruby version
+## アプリケーションの機能
+- 録音した音声の投稿
+- 音声の再生、一時停止
+- フォロー
+- お気に入り登録
+- コメント
+- メモ（ユーザー個人だけが参照できる）
+- 通知（フォロー、お気に入り登録、コメントがあった場合）
+- 検索（Ransackを使用）
+- 投稿の並び順の切替（最新順、人気順）
+- ページネーション
+- ログイン
+- ログイン状態の保持
 
-* System dependencies
+## 環境
+ ■フレームワーク
 
-* Configuration
+　Ruby on Rails
 
-* Database creation
+ ■インフラ
 
-* Database initialization
+　AWS EC2, Docker
 
-* How to run the test suite
+ ■データベース
 
-* Services (job queues, cache servers, search engines, etc.)
+　AWS RDS, PostgreSQL
 
-* Deployment instructions
+ ■アプリケーションサーバー
 
-* ...
+　Puma
+
+ ■Webサーバー
+
+　Nginx
