@@ -67,8 +67,11 @@ jQuery(document).on('turbolinks:load', function() {
 jQuery(document).on('turbolinks:load', function() {
   if (document.URL.match('/memos')){
     $('.memo_list').addClass('active');
-  } else if (document.URL.match('/musicposts')){
+    return;
+  }
+  if (document.URL.match('/musicposts')){
     $('.comment_list').addClass('active');
+    return;
   }
   if (document.URL.match('/favorites')){
     $('.favorites_list').addClass('active');
@@ -96,6 +99,7 @@ jQuery(document).on('turbolinks:load', function() {
   }
   if (document.URL.match('/users')){
     $('.upload_list').addClass('active');
+    return;
   }
 });
 
