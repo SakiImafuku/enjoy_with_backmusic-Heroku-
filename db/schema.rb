@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_130514) do
     t.bigint "taxon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["musicpost_id", "taxon_id"], name: "index_classifications_on_musicpost_id_and_taxon_id", unique: true
     t.index ["musicpost_id"], name: "index_classifications_on_musicpost_id"
     t.index ["taxon_id"], name: "index_classifications_on_taxon_id"
   end
